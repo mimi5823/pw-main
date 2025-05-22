@@ -7,66 +7,9 @@ import { ArrowRight, Calendar, Clock, Users, Award, BookOpen, CheckCircle2 } fro
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
+import CohortScheduleSection from '@/components/cohort-schedule';
 
-// Define types for the schedule
-type ScheduleItem = {
-  week: number;
-  title: string;
-  topics: string[];
-  pacing: string[];
-};
-
-// Weekly Schedule Tabs Component
-const WeeklyScheduleTabs = ({ schedule }: { schedule: ScheduleItem[] }) => {
-  const [activeTab, setActiveTab] = useState("week1");
-  
-  return (
-    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-      <TabsList className="grid grid-cols-4 mb-8">
-        <TabsTrigger value="week1">Week 1</TabsTrigger>
-        <TabsTrigger value="week2">Week 2</TabsTrigger>
-        <TabsTrigger value="week3">Week 3</TabsTrigger>
-        <TabsTrigger value="week4">Week 4</TabsTrigger>
-      </TabsList>
-      
-      {schedule.map((week, index) => (
-        <TabsContent key={index} value={`week${week.week}`} className="border border-gray-800 rounded-xl p-6 bg-black">
-          <div className="mb-4">
-            <h4 className="text-xl font-bold text-primary mb-2">Week {week.week}: {week.title}</h4>
-            <p className="text-gray-300 mb-4">
-              Focus on understanding the core concepts and building a solid foundation.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h5 className="text-lg font-semibold mb-3 text-white">Topics Covered</h5>
-              <ul className="space-y-2">
-                {week.topics.map((topic, i) => (
-                  <li key={i} className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300">{topic}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div>
-              <h5 className="text-lg font-semibold mb-3 text-white">Suggested Pacing</h5>
-              <div className="space-y-3">
-                {week.pacing.map((pace, i) => (
-                  <div key={i} className="bg-gray-900 rounded-lg p-3 border border-gray-800">
-                    <p className="text-gray-300">{pace}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </TabsContent>
-      ))}
-    </Tabs>
-  );
-};
+// Component imports and setup
 
 // Animation variants
 const containerVariants = {
@@ -150,77 +93,7 @@ export default function CohortsPage() {
     }
   ];
 
-  // Blockchain Fundamentals Cohort Detailed Schedule
-  const blockchainSchedule = [
-    {
-      week: 1,
-      title: 'Introduction to Blockchain Technology',
-      topics: [
-        'What is Blockchain? (Decentralization, transparency, immutability)',
-        'Problems blockchain solves',
-        'How a blockchain works (Blocks, chains, basic cryptography)',
-        'Distributed Ledger Technology',
-        'Types of Blockchains (Public, Private, Consortium)',
-        'Key Concepts (Nodes, conceptual mining, basic consensus mechanisms)'
-      ],
-      pacing: [
-        'Day 1-2: Focus on "What is Blockchain?" and "How it Works"',
-        'Day 3: Cover "Types of Blockchains" and "Key Concepts"',
-        'Day 4: Review of the week\'s material with quiz questions'
-      ]
-    },
-    {
-      week: 2,
-      title: 'Cryptocurrencies: The First Application',
-      topics: [
-        'What is Cryptocurrency? (Digital vs. traditional currency, cryptography)',
-        'Bitcoin: The Pioneer (History, significance)',
-        'Altcoins: An Overview (Brief intro to Ethereum as a platform)',
-        'Wallets and Exchanges (Conceptual: storage, public/private keys, exchanges)'
-      ],
-      pacing: [
-        'Day 1: "What is Cryptocurrency?" and its core features',
-        'Day 2: Deep dive into Bitcoin',
-        'Day 3: Introduction to Altcoins and the concept of Wallets',
-        'Day 4: Understanding Exchanges and week review'
-      ]
-    },
-    {
-      week: 3,
-      title: 'The Expanding Blockchain Ecosystem (Web3)',
-      topics: [
-        'Smart Contracts: Automated Agreements (Basic concept, potential uses)',
-        'Decentralized Applications (DApps) (Conceptual differences from traditional apps)',
-        'Non-Fungible Tokens (NFTs) (Digital ownership, use cases)',
-        'Decentralized Autonomous Organizations (DAOs) (Community governance)',
-        'Introduction to Decentralized Finance (DeFi) (Lending, borrowing, DEXs, stablecoins)'
-      ],
-      pacing: [
-        'Day 1: Smart Contracts and DApps',
-        'Day 2: Focus on NFTs',
-        'Day 3: Introduction to DAOs',
-        'Day 4: Introduction to DeFi core concepts',
-        'Day 5: Review and connecting Web3 ecosystem elements'
-      ]
-    },
-    {
-      week: 4,
-      title: 'Blockchain in the Real World & Future Outlook',
-      topics: [
-        'Real-World Use Cases (Supply chain, healthcare, etc.)',
-        'Understanding the Landscape (Blockchain infrastructure, protocols)',
-        'Opportunities and Challenges (Benefits, scalability, regulation, adoption)',
-        'Legal and regulatory considerations',
-        'The Future of Web3 (Speculative overview)'
-      ],
-      pacing: [
-        'Day 1: Explore Real-World Use Cases across different industries',
-        'Day 2: Understanding the broader landscape and different protocols',
-        'Day 3: Discussing Opportunities, Challenges, and regulatory aspects',
-        'Day 4: Contemplating the Future of Web3 and cohort wrap-up'
-      ]
-    }
-  ];
+  // Using the CohortScheduleSection component for schedule display
 
   // Exclusive benefits for cohort members
   const exclusiveBenefits = [
@@ -450,7 +323,7 @@ export default function CohortsPage() {
             <div className="mb-12">
               <h3 className="text-2xl font-bold mb-6 text-center">Weekly Schedule</h3>
               
-              <WeeklyScheduleTabs schedule={blockchainSchedule} />
+              <CohortScheduleSection />
             </div>
 
             {/* Call to Action */}
