@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    @apply px-4 md:px-6 lg:px-8 mx-auto max-w-7xl;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-3 sm:px-4 py-2 rounded-md font-medium transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 px-3 sm:px-4 py-2 rounded-md font-medium transition-colors;
+  }
+  
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-3 sm:px-4 py-2 rounded-md font-medium transition-colors;
+  }
+  
+  /* Responsive container for small screens */
+  .container-sm {
+    @apply px-3 sm:px-4 md:px-6 lg:px-8 mx-auto max-w-7xl;
+  }
+  
+  /* Improved gradient border utilities */
+  .gradient-border-t {
+    @apply relative;
+    &::after {
+      content: '';
+      @apply absolute left-0 right-0 top-0 h-[1px];
+      background: linear-gradient(90deg, transparent, rgba(255, 210, 48, 0.6) 50%, transparent 100%);
+    }
+  }
+  
+  .gradient-border-b {
+    @apply relative;
+    &::after {
+      content: '';
+      @apply absolute left-0 right-0 bottom-0 h-[1px];
+      background: linear-gradient(90deg, transparent, rgba(255, 210, 48, 0.6) 50%, transparent 100%);
+    }
+  }
+  
+  .gradient-border-r {
+    @apply relative;
+    &::after {
+      content: '';
+      @apply absolute top-0 bottom-0 right-0 w-[1px];
+      background: linear-gradient(180deg, transparent, rgba(255, 210, 48, 0.6) 50%, transparent 100%);
+    }
+  }
+  
+  .gradient-border-l {
+    @apply relative;
+    &::after {
+      content: '';
+      @apply absolute top-0 bottom-0 left-0 w-[1px];
+      background: linear-gradient(180deg, transparent, rgba(255, 210, 48, 0.6) 50%, transparent 100%);
+    }
+  }
+  
+  /* Card gradient border */
+  .gradient-border-card {
+    @apply relative border border-gray-800 overflow-hidden;
+    &::before {
+      content: '';
+      @apply absolute inset-0 rounded-xl pointer-events-none;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 210, 48, 0.1) 50%, transparent 100%) border-box;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask-composite: xor;
+      padding: 1px;
+    }
+  }
+  
+  /* Mobile-specific gradient borders */
+  .gradient-border-mobile-t {
+    @apply relative;
+    &::before {
+      content: '';
+      @apply absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/80 to-transparent;
+      box-shadow: 0 0 8px 1px rgba(255, 210, 48, 0.3);
+    }
+  }
+  
+  /* Hover effects for cards */
+  .card-glow-hover {
+    @apply transition-all duration-300;
+    &:hover {
+      @apply border-primary/30;
+      box-shadow: 0 0 20px 2px rgba(255, 210, 48, 0.15);
+    }
+  }
+  
+  /* Responsive container for mobile */
+  .container-xs {
+    @apply px-2 sm:px-3 md:px-4 mx-auto max-w-7xl;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 0 0% 100%; /* White */
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 48 100% 60%; /* #ffd230 */
+    --primary-foreground: 0 0% 0%; /* Black for text on primary elements */
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 48 100% 60%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Keep dark theme same as light for this project to ensure black background */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 48 100% 60%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 48 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+  
+  /* Improved typography scale */
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
+  h2 { @apply text-3xl md:text-4xl lg:text-5xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+  h4 { @apply text-xl md:text-2xl; }
+  h5 { @apply text-lg md:text-xl; }
+  h6 { @apply text-base md:text-lg; }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Better focus styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+}

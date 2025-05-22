@@ -1,0 +1,38 @@
+- [ ] **Set up Project**: Create a new Next.js project with Tailwind CSS and shadcn/ui. (Completed)
+- [ ] **Create `todos.md`**: Initialize a `todos.md` file to track progress. (Completed)
+- [x] **Basic Layout and Header**: (Completed)
+    - [x] Create the main layout (background color #000000).
+    - [x] Implement the header component with navigation links (text color #ffd230 for active/logo, white for inactive).
+- [x] **Hero Section**: (Completed)
+    - [x] Add the "Now Enrolling", "Botcamp Cohort 12" title.
+    - [x] Add the introductory paragraph.
+    - [x] Add "Enroll Now" and "Chat in Telegram" buttons (main color #ffd230, text #000000).
+    - [x] Add the "View past cohort (11)" link.
+- [x] **Accelerate Your Trading Career Section**: (Completed)
+    - [x] Add the section title.
+    - [x] Add the image/diagram.
+    - [x] Add the four course highlights (Intro to Algorithmic Trading, Market Making Strategies, etc.) with their respective icons and descriptions.
+- [x] **Botcamp Cohort 12 Schedule Section**: (Completed)
+    - [x] Add the main title and introductory paragraph.
+    - [x] Add the "Theory Sessions", "Technical Sessions", and "Demo Day" subsections with icons and descriptions.
+    - [x] Implement the weekly schedule breakdown (Week 0 to Week 4):
+        - [x] For each week, include the week number, title, and description of activities/sessions.
+        - [x] Style session details (date, type - Theory/Technical).
+- [x] **"Ready to transform your trading skills?" CTA Section**: (Completed)
+    - [x] Add the heading.
+    - [x] Add "Enroll Now" and "Chat in Telegram" buttons.
+- [x] **Powered by Hummingbot Section**: (Completed)
+    - [x] Add the section title.
+    - [x] Add the introductory paragraph.
+    - [x] Add the statistics ($34 billion, 50+, 15K+).
+    - [x] Add "Website" and "Github" links.
+- [x] **Footer Section**: (Completed)
+    - [x] Add copyright information.
+    - [x] Add links to "Botcamp courses" and "Hummingbot website".
+- [x] **Styling and UX**: (in_progress)
+    - [ ] Ensure all text uses appropriate fonts and colors (primary #ffd230, background #000000, other text likely white or a light gray variant from the original site).
+    - [ ] Match spacing, component sizes, and overall layout to the original site.
+    - [ ] Ensure responsiveness if implied by the original site's design.
+- [ ] **Final Review and Download Prep**: Review all implemented sections against the original design and skipped sections list. Ensure all assets are correctly linked or embedded. Prepare the project files for download.
+- [ ] **Versioning**: Create a version of the project.
+- [ ] **Deployment (Optional/Clarify)**: Clarify with the user if they want to deploy the site or just download the files.

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g filter="url(#filter0_d)">
+    <path d="M256 64C185.307 64 128 121.307 128 192C128 262.693 185.307 320 256 320C326.693 320 384 262.693 384 192C384 121.307 326.693 64 256 64Z" fill="#FFC107"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M256 96C203.07 96 160 139.07 160 192C160 244.93 203.07 288 256 288C308.93 288 352 244.93 352 192C352 139.07 308.93 96 256 96ZM256 112C299.019 112 336 148.981 336 192C336 235.019 299.019 272 256 272C212.981 272 176 235.019 176 192C176 148.981 212.981 112 256 112Z" fill="#FF3D00"/>
+    <path d="M256 128C221.888 128 194.667 155.221 194.667 189.333C194.667 223.445 221.888 250.667 256 250.667C290.112 250.667 317.333 223.445 317.333 189.333C317.333 155.221 290.112 128 256 128Z" fill="#FFC107"/>
+    <path d="M256 144C230.595 144 210 164.595 210 190C210 215.405 230.595 236 256 236C281.405 236 302 215.405 302 190C302 164.595 281.405 144 256 144Z" fill="#FF3D00"/>
+    <path d="M256 160C239.431 160 226 173.431 226 190C226 206.569 239.431 220 256 220C272.569 220 286 206.569 286 190C286 173.431 272.569 160 256 160Z" fill="#FFC107"/>
+    <path d="M256 176C248.268 176 242 182.268 242 190C242 197.732 248.268 204 256 204C263.732 204 270 197.732 270 190C270 182.268 263.732 176 256 176Z" fill="#FF3D00"/>
+    <path d="M256 192C256 192 256 192 256 192C256 192 256 192 256 192Z" fill="#FFC107"/>
+    <path d="M128 320C128 320 160 352 256 352C352 352 384 320 384 320" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M160 352C160 352 192 384 256 384C320 384 352 352 352 352" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M192 384C192 384 224 416 256 416C288 416 320 384 320 384" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M224 416C224 416 240 432 256 432C272 432 288 416 288 416" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M240 432C240 432 248 440 256 440C264 440 272 432 272 432" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M248 440C248 440 252 444 256 444C260 444 264 440 264 440" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M252 444C252 444 254 446 256 446C258 446 260 444 260 444" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M254 446C254 446 255 447 256 447C257 447 258 446 258 446" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255 447C255 447 255.5 447.5 256 447.5C256.5 447.5 257 447 257 447" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.5 447.5C255.5 447.5 255.75 447.75 256 447.75C256.25 447.75 256.5 447.5 256.5 447.5" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.75 447.75C255.75 447.75 255.875 447.875 256 447.875C256.125 447.875 256.25 447.75 256.25 447.75" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.875 447.875C255.875 447.875 255.938 447.938 256 447.938C256.062 447.938 256.125 447.875 256.125 447.875" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.938 447.938C255.938 447.938 255.969 447.969 256 447.969C256.031 447.969 256.062 447.938 256.062 447.938" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.969 447.969C255.969 447.969 255.984 447.984 256 447.984C256.016 447.984 256.031 447.969 256.031 447.969" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.984 447.984C255.984 447.984 255.992 447.992 256 447.992C256.008 447.992 256.016 447.984 256.016 447.984" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.992 447.992C255.992 447.992 255.996 447.996 256 447.996C256.004 447.996 256.008 447.992 256.008 447.992" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.996 447.996C255.996 447.996 255.998 447.998 256 447.998C256.002 447.998 256.004 447.996 256.004 447.996" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.998 447.998C255.998 447.998 255.999 447.999 256 447.999C256.001 447.999 256.002 447.998 256.002 447.998" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+    <path d="M255.999 447.999C255.999 447.999 256 448 256 448C256 448 256.001 447.999 256.001 447.999" stroke="#FF3D00" stroke-width="16" stroke-linecap="round"/>
+  </g>
+  <defs>
+    <filter id="filter0_d" x="0" y="0" width="512" height="512" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy="4"/>
+      <feGaussianBlur stdDeviation="2"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+</svg>
