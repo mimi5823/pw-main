@@ -116,7 +116,7 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
     <div 
       className={`${
         collapsed ? 'w-16' : 'w-56'
-      } bg-black border-r border-gray-800/30 h-screen flex flex-col md:gradient-border-r transition-all duration-300 ease-in-out relative`}
+      } bg-black border-r border-gray-800/30 h-screen flex flex-col md:gradient-border-r transition-all duration-300 ease-in-out relative shadow-xl`}
     >
       {/* Hidden file input for profile image upload */}
       <input 
@@ -131,7 +131,7 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
       {!isMobile && (
         <button 
           onClick={toggleCollapse}
-          className="absolute -right-3 top-20 bg-black text-primary border border-primary/30 rounded-full p-1.5 shadow-lg z-10 hover:bg-gray-900 transition-all duration-300 backdrop-blur-sm"
+          className="absolute -right-3 top-20 bg-black text-primary border border-primary/30 rounded-full p-1.5 shadow-lg z-10 hover:bg-gray-900 transition-all duration-300 backdrop-blur-sm hover:shadow-primary/20 hover:shadow-xl"
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {collapsed ? <ChevronRight className="w-3.5 h-3.5" /> : <ChevronLeft className="w-3.5 h-3.5" />}
@@ -148,7 +148,7 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
         {onClose && !collapsed && (
           <button 
             onClick={onClose}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-900 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-black transition-colors"
             aria-label="Close sidebar"
           >
             <X className="w-5 h-5 text-gray-400" />
@@ -158,7 +158,7 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
 
       {!collapsed && (
         <div className="px-3 py-2 mb-4">
-          <div className="bg-gray-900 rounded-xl p-3 border border-gray-800">
+          <div className="bg-black rounded-xl p-3 border border-gray-800">
             <div className="flex items-center space-x-3">
               <div 
                 className="relative w-10 h-10 rounded-full bg-primary/90 flex items-center justify-center text-black font-bold text-lg cursor-pointer overflow-hidden group"
@@ -205,7 +205,7 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
       )}
 
       <nav className={`${collapsed ? 'px-2' : 'px-3'} py-2 flex-grow overflow-y-auto`}>
-        <ul className="space-y-1">
+        <ul className="space-y-1.5">
           {navItems.map((item) => (
             <li key={item.path}>
               <Link
@@ -213,15 +213,15 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
                 onClick={handleNavClick}
                 className={`flex items-center ${
                   collapsed ? 'justify-center px-1.5' : 'px-3'
-                } py-2.5 rounded-lg transition-colors ${
+                } py-2.5 rounded-lg transition-all duration-300 ${
                   pathname === item.path || (item.path !== "/dashboard" && pathname?.startsWith(item.path))
-                    ? "bg-primary/10 text-primary border border-primary/20"
-                    : "text-gray-400 hover:bg-gray-900 hover:text-white border border-transparent"
+                    ? "bg-primary/10 text-primary border border-primary/20 shadow-lg shadow-primary/10"
+                    : "text-gray-400 hover:bg-gray-900 hover:text-white border border-transparent hover:shadow-md"
                 }`}
                 title={collapsed ? item.name : undefined}
               >
                 <span className={collapsed ? '' : 'mr-3'}>{item.icon}</span>
-                {!collapsed && item.name}
+                {!collapsed && <span className="font-medium">{item.name}</span>}
               </Link>
             </li>
           ))}
@@ -233,13 +233,13 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
           onClick={handleLogout}
           className={`w-full ${
             collapsed ? 'justify-center px-1.5' : 'px-3'
-          } py-2.5 text-gray-400 hover:text-white hover:bg-gray-900 transition-colors rounded-lg flex items-center ${
+          } py-2.5 text-gray-400 hover:text-white hover:bg-gray-900 transition-all duration-300 rounded-lg flex items-center border border-transparent hover:border-gray-800 ${
             collapsed ? 'justify-center' : 'text-left'
           }`}
           title={collapsed ? "Sign Out" : undefined}
         >
           <LogOut className={`w-5 h-5 ${collapsed ? '' : 'mr-3'}`} />
-          {!collapsed && "Sign Out"}
+          {!collapsed && <span className="font-medium">Sign Out</span>}
         </button>
       </div>
     </div>

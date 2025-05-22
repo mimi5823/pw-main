@@ -56,21 +56,21 @@ export default function MobileNav() {
   return (
     <div className="md:hidden">
       {/* Fixed bottom navigation bar with enhanced styling */}
-      <div className="fixed bottom-0 left-0 right-0 bg-black border-t border-gray-800/30 z-40 shadow-xl gradient-border-t">
+      <div className="fixed bottom-0 left-0 right-0 bg-black border-t border-gray-800/30 z-40 shadow-xl gradient-border-mobile-t backdrop-blur-sm">
         <div className="flex justify-around items-center py-2 px-1">
           {mobileNavItems.map((item) => (
             <Link
               key={item.path}
               href={item.path}
-              className={`flex flex-col items-center justify-center px-1.5 py-1.5 rounded-lg transition-all duration-200 ${
+              className={`flex flex-col items-center justify-center px-2 py-2 rounded-lg transition-all duration-200 ${
                 pathname === item.path || (item.path !== "/dashboard" && pathname?.startsWith(item.path))
-                  ? "text-primary font-medium bg-primary/10 border border-primary/20"
-                  : "text-gray-400 hover:text-gray-200 hover:bg-gray-900/40 border border-transparent"
+                  ? "text-primary font-medium bg-primary/10 border border-primary/20 shadow-lg shadow-primary/10"
+                  : "text-gray-400 hover:text-gray-200 hover:bg-black/40 border border-transparent"
               }`}
               aria-label={item.name}
             >
-              <span className="mb-0.5">{item.icon}</span>
-              <span className="text-[9px] sm:text-[10px] font-medium whitespace-nowrap">{item.name}</span>
+              <span className="mb-1">{item.icon}</span>
+              <span className="text-[10px] sm:text-[11px] font-medium whitespace-nowrap">{item.name}</span>
             </Link>
           ))}
         </div>

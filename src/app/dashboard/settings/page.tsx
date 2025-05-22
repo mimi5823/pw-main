@@ -103,7 +103,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Account Security Section */}
-      <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+      <div className="bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 p-6 shadow-lg border border-gray-800">
         <div className="flex items-center mb-6">
           <Shield className="w-6 h-6 text-primary mr-3" />
           <h2 className="text-xl font-bold text-white">Account Security</h2>
@@ -111,7 +111,7 @@ export default function SettingsPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Connected Email */}
-          <div className="p-5 bg-gray-900 rounded-xl border border-gray-800">
+          <div className="p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
             <div className="flex items-center mb-3">
               <Mail className="w-5 h-5 text-primary mr-2" />
               <h3 className="text-white font-medium">Connected Email</h3>
@@ -165,7 +165,7 @@ export default function SettingsPage() {
           </div>
           
           {/* Connected Wallet */}
-          <div className="p-5 bg-gray-900 rounded-xl border border-gray-800">
+          <div className="p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
             <div className="flex items-center mb-3">
               <Wallet className="w-5 h-5 text-primary mr-2" />
               <h3 className="text-white font-medium">Connected Wallet</h3>
@@ -226,7 +226,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Profile Settings */}
-      <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+      <div className="bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 p-6 shadow-lg border border-gray-800">
         <div className="flex items-center mb-6">
           <User className="w-6 h-6 text-primary mr-3" />
           <h2 className="text-xl font-bold text-white">Profile Settings</h2>
@@ -253,7 +253,7 @@ export default function SettingsPage() {
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 placeholder="Enter your display name"
-                className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
               />
             </div>
             
@@ -269,7 +269,7 @@ export default function SettingsPage() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="username"
-                  className="w-full pl-8 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full pl-8 px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
             </div>
@@ -285,7 +285,7 @@ export default function SettingsPage() {
               value={bio}
               onChange={(e) => setBio(e.target.value)}
               placeholder="Tell us about yourself"
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
             ></textarea>
           </div>
           
@@ -299,14 +299,14 @@ export default function SettingsPage() {
       </div>
 
       {/* Notification Preferences */}
-      <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+      <div className="bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 p-6 shadow-lg border border-gray-800">
         <div className="flex items-center mb-6">
           <Bell className="w-6 h-6 text-primary mr-3" />
           <h2 className="text-xl font-bold text-white">Notification Preferences</h2>
         </div>
         
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-5 bg-gray-900 rounded-xl border border-gray-800">
+          <div className="flex items-center justify-between p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
             <div>
               <h3 className="text-white font-medium">Course Updates</h3>
               <p className="text-sm text-gray-400 mt-1">
@@ -324,7 +324,7 @@ export default function SettingsPage() {
             </label>
           </div>
           
-          <div className="flex items-center justify-between p-5 bg-gray-900 rounded-xl border border-gray-800">
+          <div className="flex items-center justify-between p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
             <div>
               <h3 className="text-white font-medium">Achievement Notifications</h3>
               <p className="text-sm text-gray-400 mt-1">
@@ -342,7 +342,7 @@ export default function SettingsPage() {
             </label>
           </div>
           
-          <div className="flex items-center justify-between p-5 bg-gray-900 rounded-xl border border-gray-800">
+          <div className="flex items-center justify-between p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
             <div>
               <h3 className="text-white font-medium">Marketing Emails</h3>
               <p className="text-sm text-gray-400 mt-1">
@@ -363,13 +363,13 @@ export default function SettingsPage() {
       </div>
 
       {/* Data Privacy Section */}
-      <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+      <div className="bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 p-6 shadow-lg border border-gray-800">
         <div className="flex items-center mb-6">
           <Lock className="w-6 h-6 text-primary mr-3" />
           <h2 className="text-xl font-bold text-white">Data Privacy</h2>
         </div>
         
-        <div className="p-5 bg-gray-900 rounded-xl border border-gray-800">
+        <div className="p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
           <div className="flex items-center mb-3">
             <Key className="w-5 h-5 text-primary mr-2" />
             <h3 className="text-white font-medium">Your Data Privacy</h3>

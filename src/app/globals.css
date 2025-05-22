@@ -12,7 +12,11 @@
   }
   
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1;
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 hover:border-primary/30;
+  }
+  
+  .black-card {
+    @apply bg-black border border-gray-800 rounded-xl shadow-lg hover:border-primary/30 transition-all duration-300;
   }
   
   .btn-primary {
@@ -83,6 +87,25 @@
     }
   }
   
+  /* Enhanced card with glow effect */
+  .enhanced-card {
+    @apply relative border border-gray-800 rounded-xl overflow-hidden bg-black;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 210, 48, 0.1);
+    &::before {
+      content: '';
+      @apply absolute inset-0 rounded-xl pointer-events-none;
+      background: linear-gradient(135deg, transparent 0%, rgba(255, 210, 48, 0.15) 50%, transparent 100%) border-box;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask-composite: xor;
+      padding: 1px;
+    }
+    &:hover {
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 210, 48, 0.2);
+      @apply border-primary/30;
+    }
+  }
+  
   /* Mobile-specific gradient borders */
   .gradient-border-mobile-t {
     @apply relative;
@@ -99,7 +122,30 @@
     &:hover {
       @apply border-primary/30;
       box-shadow: 0 0 20px 2px rgba(255, 210, 48, 0.15);
+      transform: translateY(-2px);
     }
+  }
+  
+  /* Button hover effects */
+  .btn-glow {
+    @apply transition-all duration-300;
+    &:hover {
+      box-shadow: 0 0 15px rgba(255, 210, 48, 0.3);
+      transform: translateY(-1px);
+    }
+  }
+  
+  /* Animated gradient background */
+  .animated-gradient-bg {
+    background: linear-gradient(270deg, #000000, #121212, #1a1a1a);
+    background-size: 600% 600%;
+    animation: gradientAnimation 8s ease infinite;
+  }
+  
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
   }
   
   /* Responsive container for mobile */

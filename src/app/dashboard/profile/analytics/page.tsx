@@ -84,7 +84,7 @@ export default function AnalyticsPage() {
       {/* Time filter */}
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-bold text-white">Learning Overview</h2>
-        <div className="flex items-center space-x-2 bg-gray-900 rounded-lg p-1">
+        <div className="flex items-center space-x-2 bg-black rounded-lg p-1">
           <Filter className="w-4 h-4 text-gray-400 ml-2" />
           <select 
             value={timeFilter}
@@ -101,7 +101,7 @@ export default function AnalyticsPage() {
 
       {/* Stats cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl p-5 border border-gray-800 hover:border-primary/30 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <div className="text-gray-400 text-sm font-medium">Total XP</div>
             <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
@@ -118,7 +118,7 @@ export default function AnalyticsPage() {
           <div className="text-xs text-gray-500 mt-1">+130 XP this week</div>
         </div>
 
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl p-5 border border-gray-800 hover:border-primary/30 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <div className="text-gray-400 text-sm font-medium">Courses Enrolled</div>
             <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
@@ -135,7 +135,7 @@ export default function AnalyticsPage() {
           <div className="text-xs text-gray-500 mt-1">New course added this month</div>
         </div>
 
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl p-5 border border-gray-800 hover:border-primary/30 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <div className="text-gray-400 text-sm font-medium">Modules Completed</div>
             <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
@@ -152,7 +152,7 @@ export default function AnalyticsPage() {
           <div className="text-xs text-gray-500 mt-1">4 modules completed this week</div>
         </div>
 
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl p-5 border border-gray-800 hover:border-primary/30 transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
             <div className="text-gray-400 text-sm font-medium">Learning Time</div>
             <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
@@ -173,7 +173,7 @@ export default function AnalyticsPage() {
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Progress Over Time */}
-        <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+        <div className="bg-black rounded-xl p-6 border border-gray-800 hover:border-primary/30 transition-all duration-300">
           <div className="flex items-center mb-6">
             <LineChart className="w-5 h-5 text-primary mr-2" />
             <h3 className="text-lg font-bold text-white">Progress Over Time</h3>
@@ -211,7 +211,7 @@ export default function AnalyticsPage() {
         </div>
         
         {/* Course Progress */}
-        <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+        <div className="bg-black rounded-xl p-6 border border-gray-800 hover:border-primary/30 transition-all duration-300">
           <div className="flex items-center mb-6">
             <BarChart className="w-5 h-5 text-primary mr-2" />
             <h3 className="text-lg font-bold text-white">Course Progress</h3>
@@ -224,7 +224,7 @@ export default function AnalyticsPage() {
                   <span className="text-gray-300">{course.course}</span>
                   <span className="text-primary font-medium">{course.progress}%</span>
                 </div>
-                <div className="w-full bg-gray-800 rounded-full h-2.5">
+                <div className="w-full bg-gray-900 rounded-full h-2.5">
                   <div 
                     className="bg-primary h-2.5 rounded-full" 
                     style={{ width: `${course.progress}%` }}
@@ -240,7 +240,7 @@ export default function AnalyticsPage() {
         </div>
         
         {/* Time Distribution */}
-        <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+        <div className="bg-black rounded-xl p-6 border border-gray-800 hover:border-primary/30 transition-all duration-300">
           <div className="flex items-center mb-6">
             <PieChart className="w-5 h-5 text-primary mr-2" />
             <h3 className="text-lg font-bold text-white">Learning Time Distribution</h3>
@@ -302,7 +302,7 @@ export default function AnalyticsPage() {
         </div>
         
         {/* Assessment Performance */}
-        <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+        <div className="bg-black rounded-xl p-6 border border-gray-800 hover:border-primary/30 transition-all duration-300">
           <div className="flex items-center mb-6">
             <Trophy className="w-5 h-5 text-primary mr-2" />
             <h3 className="text-lg font-bold text-white">Assessment Performance</h3>
@@ -361,7 +361,7 @@ export default function AnalyticsPage() {
       </div>
       
       {/* Activity Log */}
-      <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+      <div className="bg-black rounded-xl p-6 border border-gray-800 hover:border-primary/30 transition-all duration-300">
         <div className="flex items-center mb-6">
           <Calendar className="w-5 h-5 text-primary mr-2" />
           <h3 className="text-lg font-bold text-white">Activity Log</h3>
@@ -374,12 +374,12 @@ export default function AnalyticsPage() {
             let bgColor;
             
             switch(activityLevel) {
-              case 0: bgColor = "bg-gray-800"; break; // No activity
+              case 0: bgColor = "bg-gray-900"; break; // No activity
               case 1: bgColor = "bg-primary/20"; break; // Low activity
               case 2: bgColor = "bg-primary/40"; break; // Medium activity
               case 3: bgColor = "bg-primary/60"; break; // High activity
               case 4: bgColor = "bg-primary"; break; // Very high activity
-              default: bgColor = "bg-gray-800";
+              default: bgColor = "bg-gray-900";
             }
             
             return (
@@ -396,7 +396,7 @@ export default function AnalyticsPage() {
           <div className="text-sm text-gray-400">
             Less
             <div className="flex items-center space-x-1 inline-flex ml-2">
-              <div className="w-3 h-3 bg-gray-800 rounded-sm"></div>
+              <div className="w-3 h-3 bg-gray-900 rounded-sm"></div>
               <div className="w-3 h-3 bg-primary/20 rounded-sm"></div>
               <div className="w-3 h-3 bg-primary/40 rounded-sm"></div>
               <div className="w-3 h-3 bg-primary/60 rounded-sm"></div>
@@ -411,7 +411,7 @@ export default function AnalyticsPage() {
       </div>
       
       {/* Insights */}
-      <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+      <div className="bg-black rounded-xl p-6 border border-gray-800 hover:border-primary/30 transition-all duration-300">
         <h3 className="text-lg font-bold text-white mb-4">Personalized Insights</h3>
         
         <div className="space-y-4">

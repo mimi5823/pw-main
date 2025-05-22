@@ -36,8 +36,8 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div className="border-b border-gray-800 pb-4">
-        <div className="flex justify-between items-center">
+      <div className="border-b border-gray-800 pb-6 gradient-border-b">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h1 className="text-3xl font-bold text-white">My Learning Hub</h1>
             <p className="text-gray-400 mt-2">
@@ -48,7 +48,7 @@ export default function DashboardPage() {
           {isAdmin && (
             <Link 
               href="/admin" 
-              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg flex items-center transition-colors"
+              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg flex items-center transition-all duration-300 shadow-lg hover:shadow-red-900/30 btn-glow"
             >
               <Shield className="w-4 h-4 mr-2" />
               Admin Dashboard
