@@ -8,6 +8,66 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
 
+// Define types for the schedule
+type ScheduleItem = {
+  week: number;
+  title: string;
+  topics: string[];
+  pacing: string[];
+};
+
+// Weekly Schedule Tabs Component
+const WeeklyScheduleTabs = ({ schedule }: { schedule: ScheduleItem[] }) => {
+  const [activeTab, setActiveTab] = useState("week1");
+  
+  return (
+    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+      <TabsList className="grid grid-cols-4 mb-8">
+        <TabsTrigger value="week1">Week 1</TabsTrigger>
+        <TabsTrigger value="week2">Week 2</TabsTrigger>
+        <TabsTrigger value="week3">Week 3</TabsTrigger>
+        <TabsTrigger value="week4">Week 4</TabsTrigger>
+      </TabsList>
+      
+      {schedule.map((week, index) => (
+        <TabsContent key={index} value={`week${week.week}`} className="border border-gray-800 rounded-xl p-6 bg-black">
+          <div className="mb-4">
+            <h4 className="text-xl font-bold text-primary mb-2">Week {week.week}: {week.title}</h4>
+            <p className="text-gray-300 mb-4">
+              Focus on understanding the core concepts and building a solid foundation.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h5 className="text-lg font-semibold mb-3 text-white">Topics Covered</h5>
+              <ul className="space-y-2">
+                {week.topics.map((topic, i) => (
+                  <li key={i} className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300">{topic}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h5 className="text-lg font-semibold mb-3 text-white">Suggested Pacing</h5>
+              <div className="space-y-3">
+                {week.pacing.map((pace, i) => (
+                  <div key={i} className="bg-gray-900 rounded-lg p-3 border border-gray-800">
+                    <p className="text-gray-300">{pace}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+      ))}
+    </Tabs>
+  );
+};
+
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -390,50 +450,7 @@ export default function CohortsPage() {
             <div className="mb-12">
               <h3 className="text-2xl font-bold mb-6 text-center">Weekly Schedule</h3>
               
-              <Tabs defaultValue="week1" className="w-full">
-                <TabsList className="grid grid-cols-4 mb-8">
-                  <TabsTrigger value="week1">Week 1</TabsTrigger>
-                  <TabsTrigger value="week2">Week 2</TabsTrigger>
-                  <TabsTrigger value="week3">Week 3</TabsTrigger>
-                  <TabsTrigger value="week4">Week 4</TabsTrigger>
-                </TabsList>
-                
-                {blockchainSchedule.map((week, index) => (
-                  <TabsContent key={index} value={`week${week.week}`} className="border border-gray-800 rounded-xl p-6 bg-black">
-                    <div className="mb-4">
-                      <h4 className="text-xl font-bold text-primary mb-2">Week {week.week}: {week.title}</h4>
-                      <p className="text-gray-300 mb-4">
-                        Focus on understanding the core concepts and building a solid foundation.
-                      </p>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="text-lg font-semibold mb-3 text-white">Topics Covered</h5>
-                        <ul className="space-y-2">
-                          {week.topics.map((topic, i) => (
-                            <li key={i} className="flex items-start">
-                              <CheckCircle2 className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                              <span className="text-gray-300">{topic}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h5 className="text-lg font-semibold mb-3 text-white">Suggested Pacing</h5>
-                        <div className="space-y-3">
-                          {week.pacing.map((pace, i) => (
-                            <div key={i} className="bg-gray-900 rounded-lg p-3 border border-gray-800">
-                              <p className="text-gray-300">{pace}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </TabsContent>
-                ))}
-              </Tabs>
+              <WeeklyScheduleTabs schedule={blockchainSchedule} />
             </div>
 
             {/* Call to Action */}

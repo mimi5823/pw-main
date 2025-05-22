@@ -169,7 +169,7 @@ export default function RewardsAndBadges() {
       </div>
 
       {/* Tabs for different sections */}
-      <Tabs value={selectedTab} defaultValue="badges" className="w-full" onValueChange={setSelectedTab}>
+      <Tabs value={selectedTab} className="w-full" onValueChange={setSelectedTab}>
         <TabsList className="grid grid-cols-3 mb-6">
           <TabsTrigger value="badges">Badges</TabsTrigger>
           <TabsTrigger value="issue">Issue Rewards</TabsTrigger>
