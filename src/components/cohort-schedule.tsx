@@ -16,6 +16,10 @@ type SessionDetail = {
   description?: string;
   items?: string[];
   footer?: string;
+  customContent?: {
+    topics: string[];
+    pacing: string[];
+  };
 };
 
 // Define types for cohort schedules
@@ -427,18 +431,62 @@ const WeekIcon = ({ weekNumber }: { weekNumber: number }) => {
 };
 
 export default function CohortScheduleSection() {
-  // State to track the selected cohort
-  const [selectedCohort, setSelectedCohort] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState("week1");
+  // State to track the selected cohort - default to blockchain-fundamentals
+  const [selectedCohort, setSelectedCohort] = useState<string>('blockchain-fundamentals');
 
   // Find the selected cohort data
   const selectedCohortData = scheduleHighlights.find(cohort => cohort.id === selectedCohort);
 
+  // Transform selected cohort schedule data to match weeklySchedule format
+  const transformedSchedule = React.useMemo(() => {
+    if (!selectedCohortData) return [];
+    
+    // Create a preparation week first
+    const prepWeek = {
+      week: 0,
+      title: 'Preparation',
+      details: [
+        {
+          type: 'Prework',
+          description: `Get ready for your ${selectedCohortData.title} journey by reviewing the recommended resources and setting up your development environment. This preparation will help you make the most of the cohort experience.`,
+        }
+      ]
+    };
+    
+    // Create weeks from the cohort data
+    const cohortWeeks = selectedCohortData.schedule.map(weekData => ({
+      week: weekData.week,
+      title: weekData.title,
+      details: [
+        {
+          type: `Week ${weekData.week}`,
+          // Create structured details instead of a single text block
+          description: '',
+          // Add custom rendering data
+          customContent: {
+            topics: weekData.topics,
+            pacing: weekData.pacing
+          }
+        }
+      ]
+    }));
+    
+    // Combine preparation week with cohort weeks
+    return [prepWeek, ...cohortWeeks];
+  }, [selectedCohortData]);
+
+  // The schedule to display - always use transformedSchedule
+  const displaySchedule = transformedSchedule;
+
   // Handle cohort card click
   const handleCohortClick = (cohortId: string, e: React.MouseEvent) => {
     e.preventDefault(); // Prevent default navigation
-    setSelectedCohort(cohortId);
-    setActiveTab("week1"); // Reset to first week when changing cohorts
+    // If clicking the same cohort again, deselect it
+    if (selectedCohort === cohortId) {
+      setSelectedCohort(null);
+    } else {
+      setSelectedCohort(cohortId);
+    }
   };
 
   return (
@@ -502,68 +550,25 @@ export default function CohortScheduleSection() {
           ))}
         </div>
 
-        {/* Dynamic Schedule Display Area */}
+        {/* Selected cohort title if one is selected */}
         <AnimatePresence mode="wait">
           {selectedCohort && selectedCohortData && (
             <motion.div 
-              key={selectedCohort}
+              key={`title-${selectedCohort}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="mb-16 bg-gray-900/30 backdrop-blur-sm p-6 rounded-xl border border-gray-800 shadow-lg"
+              className="mb-8 text-center"
             >
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-primary mb-2">{selectedCohortData.title} Schedule</h3>
-                <p className="text-gray-300">A {selectedCohortData.duration} journey starting {selectedCohortData.startDate}</p>
-              </div>
-              
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid grid-cols-4 mb-8">
-                  {selectedCohortData.schedule.map((week) => (
-                    <TabsTrigger key={week.week} value={`week${week.week}`}>Week {week.week}</TabsTrigger>
-                  ))}
-                </TabsList>
-                
-                {selectedCohortData.schedule.map((week) => (
-                  <TabsContent key={week.week} value={`week${week.week}`} className="border border-gray-800 rounded-xl p-6 bg-black">
-                    <div className="mb-4">
-                      <h4 className="text-xl font-bold text-primary mb-2">Week {week.week}: {week.title}</h4>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="text-lg font-semibold mb-3 text-white">Topics Covered</h5>
-                        <ul className="space-y-2">
-                          {week.topics.map((topic, i) => (
-                            <li key={i} className="flex items-start">
-                              <CheckCircle2 className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                              <span className="text-gray-300">{topic}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h5 className="text-lg font-semibold mb-3 text-white">Suggested Pacing</h5>
-                        <div className="space-y-3">
-                          {week.pacing.map((pace, i) => (
-                            <div key={i} className="bg-gray-900 rounded-lg p-3 border border-gray-800">
-                              <p className="text-gray-300">{pace}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </TabsContent>
-                ))}
-              </Tabs>
+              <h3 className="text-2xl font-bold text-primary mb-2">{selectedCohortData.title} Schedule</h3>
+              <p className="text-gray-300">A {selectedCohortData.duration} journey starting {selectedCohortData.startDate}</p>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Original Weekly Schedule Section */}
-        {weeklySchedule.map((weekData) => (
+        {/* Weekly Schedule Section - Shows either default or selected cohort schedule */}
+        {displaySchedule.map((weekData) => (
           <div key={weekData.week} className="mb-6 last:mb-0 bg-black rounded-md p-4 md:p-6 border border-gray-900 backdrop-blur-sm relative shadow-md">
             {weekData.week !== 0 && (
               <div className="absolute left-[2.5rem] -top-8 w-px h-8 bg-gradient-to-b from-transparent to-primary/50"></div>
@@ -628,17 +633,55 @@ export default function CohortScheduleSection() {
                     </AccordionTrigger>
                     <AccordionContent className="pl-8 md:pl-16 pb-5 pt-2 text-gray-300 text-sm md:text-base leading-relaxed">
                       <div className="bg-black p-4 py-5 md:p-5 rounded-md border border-gray-900 shadow-inner max-w-full overflow-visible">
-                        <p className="whitespace-normal">{detail.description}</p>
-                        {detail.items && (
-                          <ul className="list-none mt-3 space-y-2">
-                            {detail.items.map((item: string, i: number) => (
-                              <li key={i} className="text-gray-300 py-1 whitespace-normal">
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
+                        {detail.customContent ? (
+                          <div className="space-y-8">
+                            <div className="bg-gray-900/50 rounded-xl p-5 border border-gray-800/50 shadow-md">
+                              <h5 className="text-lg font-semibold mb-4 text-primary flex items-center">
+                                <span className="bg-primary/20 p-1.5 rounded-md mr-3">
+                                  <Calendar className="w-5 h-5 text-primary" />
+                                </span>
+                                Topics Covered
+                              </h5>
+                              <ul className="space-y-3 pl-2">
+                                {detail.customContent.topics.map((topic, i) => (
+                                  <li key={i} className="flex items-start group transition-all duration-200 hover:translate-x-1">
+                                    <CheckCircle2 className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                                    <span className="text-gray-200 group-hover:text-white transition-colors">{topic}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div className="bg-gray-900/50 rounded-xl p-5 border border-gray-800/50 shadow-md">
+                              <h5 className="text-lg font-semibold mb-4 text-primary flex items-center">
+                                <span className="bg-primary/20 p-1.5 rounded-md mr-3">
+                                  <Clock className="w-5 h-5 text-primary" />
+                                </span>
+                                Suggested Pacing
+                              </h5>
+                              <div className="space-y-3">
+                                {detail.customContent.pacing.map((pace, i) => (
+                                  <div key={i} className="bg-gray-900 rounded-lg p-3.5 border border-gray-800 hover:border-gray-700 transition-colors shadow-sm">
+                                    <p className="text-gray-200">{pace}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <>
+                            <p className="whitespace-normal">{detail.description}</p>
+                            {detail.items && (
+                              <ul className="list-none mt-3 space-y-2">
+                                {detail.items.map((item: string, i: number) => (
+                                  <li key={i} className="text-gray-300 py-1 whitespace-normal">
+                                    <span>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                            {detail.footer && <p className="mt-3 text-sm text-gray-400 italic whitespace-normal">{detail.footer}</p>}
+                          </>
                         )}
-                        {detail.footer && <p className="mt-3 text-sm text-gray-400 italic whitespace-normal">{detail.footer}</p>}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
