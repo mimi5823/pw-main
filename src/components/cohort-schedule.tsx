@@ -432,7 +432,7 @@ const WeekIcon = ({ weekNumber }: { weekNumber: number }) => {
 
 export default function CohortScheduleSection() {
   // State to track the selected cohort - default to blockchain-fundamentals
-  const [selectedCohort, setSelectedCohort] = useState<string>('blockchain-fundamentals');
+  const [selectedCohort, setSelectedCohort] = useState<string | null>('blockchain-fundamentals');
 
   // Find the selected cohort data
   const selectedCohortData = scheduleHighlights.find(cohort => cohort.id === selectedCohort);
@@ -660,7 +660,7 @@ export default function CohortScheduleSection() {
                               </h5>
                               <div className="space-y-3">
                                 {detail.customContent.pacing.map((pace, i) => (
-                                  <div key={i} className="bg-gray-950 rounded-lg p-3.5 border border-gray-800 hover:border-primary/30 transition-colors shadow-sm">
+                                  <div key={i} className="bg-black rounded-lg p-3.5 border border-gray-800 hover:border-primary/30 transition-colors shadow-sm">
                                     <p className="text-gray-200">{pace}</p>
                                   </div>
                                 ))}
