@@ -80,8 +80,14 @@ export default function AccelerateCareerSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
           {features.map((feature) => (
             <div key={feature.title} className="flex flex-col items-center text-center group">
-              <div className="relative w-12 h-12 mb-3 transition-transform duration-300 group-hover:scale-110">
-                <Image src={feature.icon} alt={feature.title} layout="fill" objectFit="contain" />
+              <div className="relative w-12 h-12 mb-3 transition-transform duration-300 group-hover:scale-110 bg-primary/20 rounded-full p-2 flex items-center justify-center">
+                <Image 
+                  src={feature.icon} 
+                  alt={feature.title} 
+                  width={32} 
+                  height={32} 
+                  className="text-primary drop-shadow-lg" 
+                />
               </div>
               <h3 className="text-lg font-semibold text-primary mb-1.5">{feature.title}</h3>
               <p className="text-gray-400 text-xs leading-relaxed">{feature.description}</p>

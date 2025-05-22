@@ -1,8 +1,12 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, Clock } from 'lucide-react';
+import { Calendar, Clock, CheckCircle2 } from 'lucide-react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Define types for our data structures
 type SessionDetail = {
@@ -14,30 +18,253 @@ type SessionDetail = {
   footer?: string;
 };
 
-const scheduleHighlights = [
+// Define types for cohort schedules
+type ScheduleWeek = {
+  week: number;
+  title: string;
+  topics: string[];
+  pacing: string[];
+};
+
+type CohortSchedule = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  startDate: string;
+  duration: string;
+  schedule: ScheduleWeek[];
+};
+
+const scheduleHighlights: CohortSchedule[] = [
   {
+    id: 'blockchain-fundamentals',
     title: 'Blockchain Fundamentals',
     description: 'Master the core concepts of blockchain technology in this 4-week cohort designed for beginners. Learn about distributed ledgers, cryptocurrencies, and Web3.',
     icon: '/theory-icon.svg',
-    url: '/cohorts/blockchain-fundamentals',
     startDate: 'June 15, 2025',
     duration: '4 weeks',
+    schedule: [
+      {
+        week: 1,
+        title: "Introduction to Blockchain Technology",
+        topics: [
+          "What is Blockchain? (Defining principles: decentralization, transparency, immutability)",
+          "Problems blockchain solves",
+          "How a blockchain works (Blocks, chains, basic cryptography)",
+          "Distributed Ledger Technology",
+          "Types of Blockchains (Public, Private, Consortium)",
+          "Key Concepts (Nodes, conceptual mining, basic consensus mechanisms like PoW/PoS)"
+        ],
+        pacing: [
+          "Days 1-2: Focus on 'What is Blockchain?' and 'How it Works' (45-60 min/day)",
+          "Day 3: Cover 'Types of Blockchains' and 'Key Concepts' (45-60 min)",
+          "Day 4: Review of the week's material (30-45 min)"
+        ]
+      },
+      {
+        week: 2,
+        title: "Cryptocurrencies: The First Application",
+        topics: [
+          "What is Cryptocurrency? (Digital vs. traditional currency, role of cryptography)",
+          "Bitcoin: The Pioneer (History, significance)",
+          "Altcoins: An Overview (Brief intro, e.g., Ethereum as a platform)",
+          "Wallets and Exchanges (Conceptual: how to store/acquire, public/private keys simply explained, basic types of exchanges)"
+        ],
+        pacing: [
+          "Day 1: 'What is Cryptocurrency?' and its core features (45-60 min)",
+          "Day 2: Deep dive into Bitcoin (45-60 min)",
+          "Day 3: Introduction to Altcoins and the concept of Wallets (45-60 min)",
+          "Day 4: Understanding Exchanges and a review of the week (30-45 min)"
+        ]
+      },
+      {
+        week: 3,
+        title: "The Expanding Blockchain Ecosystem (Web3)",
+        topics: [
+          "Smart Contracts: Automated Agreements (Basic concept, no coding, potential uses)",
+          "Decentralized Applications (DApps) (What they are, conceptual differences from traditional apps)",
+          "Non-Fungible Tokens (NFTs) (Understanding NFTs, digital ownership, use cases)",
+          "Decentralized Autonomous Organizations (DAOs) (Intro to DAOs, community governance)",
+          "Introduction to Decentralized Finance (DeFi) (What is DeFi? Simple explanations of lending, borrowing, DEXs, stablecoins)"
+        ],
+        pacing: [
+          "Day 1: Smart Contracts and DApps (45-60 min)",
+          "Day 2: Focus on NFTs (45-60 min)",
+          "Day 3: Introduction to DAOs (45-60 min)",
+          "Day 4: Introduction to DeFi core concepts (60 min)",
+          "Day 5: Review and connecting how these elements form the Web3 ecosystem (30-45 min)"
+        ]
+      },
+      {
+        week: 4,
+        title: "Blockchain in the Real World & Future Outlook",
+        topics: [
+          "Real-World Use Cases (Examples in supply chain, healthcare, etc. - conceptual)",
+          "Understanding the Landscape (Basic overview of blockchain infrastructure, different protocols high-level)",
+          "Opportunities and Challenges (Benefits, scalability, regulation, adoption)",
+          "Legal and regulatory considerations (awareness)",
+          "The Future of Web3 (Speculative overview)"
+        ],
+        pacing: [
+          "Day 1: Explore Real-World Use Cases across different industries (45-60 min)",
+          "Day 2: Understanding the broader landscape and different protocols (45-60 min)",
+          "Day 3: Discussing Opportunities, Challenges, and regulatory aspects (45-60 min)",
+          "Day 4: Contemplating the Future of Web3 and cohort wrap-up (30-45 min)"
+        ]
+      }
+    ]
   },
   {
+    id: 'algorithmic-trading',
     title: 'Algorithmic Trading',
     description: "Learn to build, test, and deploy algorithmic trading strategies in this intensive bootcamp led by industry experts.",
     icon: '/technical-icon.svg',
-    url: '#',
     startDate: 'July 10, 2025',
     duration: '6 weeks',
+    schedule: [
+      {
+        week: 1,
+        title: "Foundations of Algorithmic Trading",
+        topics: [
+          "Introduction to Market Making",
+          "Order Book Mechanics",
+          "Exchange Types and Differences",
+          "Strategy Types Overview",
+          "Setting Up Your Development Environment"
+        ],
+        pacing: [
+          "Day 1-2: Market Making Fundamentals (60 min/day)",
+          "Day 3: Exchange Types and Order Books (45 min)",
+          "Day 4-5: Strategy Types and Environment Setup (60 min/day)"
+        ]
+      },
+      {
+        week: 2,
+        title: "Building Your First Trading Bot",
+        topics: [
+          "Hummingbot Framework Overview",
+          "Scripting Basics",
+          "Accessing Order Books",
+          "Executing Trades",
+          "Handling Events"
+        ],
+        pacing: [
+          "Day 1-2: Framework and Scripting (60 min/day)",
+          "Day 3-4: Order Books and Trade Execution (60 min/day)",
+          "Day 5: Event Handling and Review (45 min)"
+        ]
+      },
+      {
+        week: 3,
+        title: "Advanced Trading Strategies",
+        topics: [
+          "Market Making Strategies",
+          "Directional Trading",
+          "Arbitrage Techniques",
+          "Risk Management",
+          "Performance Measurement"
+        ],
+        pacing: [
+          "Day 1-2: Market Making Deep Dive (60 min/day)",
+          "Day 3: Directional Trading (60 min)",
+          "Day 4: Arbitrage Techniques (60 min)",
+          "Day 5: Risk Management (45 min)"
+        ]
+      },
+      {
+        week: 4,
+        title: "Strategy Implementation",
+        topics: [
+          "Custom Controller Development",
+          "Multi-timeframe Support",
+          "Statistical Arbitrage",
+          "Configuration Management",
+          "Testing Methodologies"
+        ],
+        pacing: [
+          "Day 1-2: Controller Development (60 min/day)",
+          "Day 3-4: Advanced Features (60 min/day)",
+          "Day 5: Testing Your Strategy (45 min)"
+        ]
+      }
+    ]
   },
   {
+    id: 'web3-development',
     title: 'Web3 Development',
     description: 'Dive into smart contract development, dApp creation, and blockchain integration in this comprehensive developer-focused cohort.',
     icon: '/demo-icon.svg',
-    url: '#',
     startDate: 'August 5, 2025',
     duration: '8 weeks',
+    schedule: [
+      {
+        week: 1,
+        title: "Web3 Development Fundamentals",
+        topics: [
+          "Introduction to Web3 Architecture",
+          "Blockchain Development Environment Setup",
+          "Solidity Basics",
+          "Smart Contract Fundamentals",
+          "Testing and Debugging"
+        ],
+        pacing: [
+          "Day 1-2: Web3 Architecture and Environment Setup (60 min/day)",
+          "Day 3-4: Solidity Basics (60 min/day)",
+          "Day 5: Smart Contract Fundamentals (45 min)"
+        ]
+      },
+      {
+        week: 2,
+        title: "Smart Contract Development",
+        topics: [
+          "Advanced Solidity Concepts",
+          "Contract Security Best Practices",
+          "Gas Optimization",
+          "Contract Deployment",
+          "Interacting with Contracts"
+        ],
+        pacing: [
+          "Day 1-2: Advanced Solidity (60 min/day)",
+          "Day 3: Security Best Practices (60 min)",
+          "Day 4: Gas Optimization (45 min)",
+          "Day 5: Deployment and Interaction (60 min)"
+        ]
+      },
+      {
+        week: 3,
+        title: "Building Decentralized Applications",
+        topics: [
+          "Frontend Integration with Web3.js/ethers.js",
+          "React for dApps",
+          "User Authentication",
+          "Wallet Integration",
+          "State Management"
+        ],
+        pacing: [
+          "Day 1-2: Frontend Integration (60 min/day)",
+          "Day 3: React for dApps (60 min)",
+          "Day 4-5: Authentication and Wallet Integration (45 min/day)"
+        ]
+      },
+      {
+        week: 4,
+        title: "Advanced Web3 Development",
+        topics: [
+          "Decentralized Storage (IPFS)",
+          "Oracles and External Data",
+          "Token Standards (ERC20, ERC721, ERC1155)",
+          "Layer 2 Solutions",
+          "Cross-chain Development"
+        ],
+        pacing: [
+          "Day 1: Decentralized Storage (60 min)",
+          "Day 2: Oracles and External Data (45 min)",
+          "Day 3-4: Token Standards (60 min/day)",
+          "Day 5: Layer 2 and Cross-chain (60 min)"
+        ]
+      }
+    ]
   },
 ];
 
@@ -200,6 +427,20 @@ const WeekIcon = ({ weekNumber }: { weekNumber: number }) => {
 };
 
 export default function CohortScheduleSection() {
+  // State to track the selected cohort
+  const [selectedCohort, setSelectedCohort] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState("week1");
+
+  // Find the selected cohort data
+  const selectedCohortData = scheduleHighlights.find(cohort => cohort.id === selectedCohort);
+
+  // Handle cohort card click
+  const handleCohortClick = (cohortId: string, e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent default navigation
+    setSelectedCohort(cohortId);
+    setActiveTab("week1"); // Reset to first week when changing cohorts
+  };
+
   return (
     <div className="py-20 md:py-28 bg-black text-white relative overflow-hidden -mt-1 mb-0">
       {/* Background effect */}
@@ -224,14 +465,19 @@ export default function CohortScheduleSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {scheduleHighlights.map((highlight) => (
-            <Link
-              key={highlight.title}
-              href={highlight.url}
-              className="bg-black backdrop-blur-sm p-6 rounded-xl flex flex-col items-center text-center hover:border-primary/30 border border-gray-800 shadow-lg w-full md:w-[95%] mx-auto transition-all duration-300 group"
+            <div
+              key={highlight.id}
+              onClick={(e) => handleCohortClick(highlight.id, e)}
+              className={`bg-black backdrop-blur-sm p-6 rounded-xl flex flex-col items-center text-center 
+                border ${selectedCohort === highlight.id ? 'border-primary' : 'border-gray-800'} 
+                shadow-lg w-full md:w-[95%] mx-auto transition-all duration-300 group cursor-pointer
+                hover:border-primary/30`}
             >
-              <div className="relative w-16 h-16 mb-4 rounded-full bg-black flex items-center justify-center p-2 border border-gray-800 group-hover:border-primary/50 transition-colors">
+              <div className={`relative w-16 h-16 mb-4 rounded-full bg-black flex items-center justify-center p-2 
+                border ${selectedCohort === highlight.id ? 'border-primary' : 'border-gray-800'} 
+                group-hover:border-primary/50 transition-colors`}>
                 <Image 
                   src={highlight.icon} 
                   alt={highlight.title} 
@@ -252,10 +498,71 @@ export default function CohortScheduleSection() {
                   <span className="text-sm text-gray-400">{highlight.duration}</span>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
+        {/* Dynamic Schedule Display Area */}
+        <AnimatePresence mode="wait">
+          {selectedCohort && selectedCohortData && (
+            <motion.div 
+              key={selectedCohort}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="mb-16 bg-gray-900/30 backdrop-blur-sm p-6 rounded-xl border border-gray-800 shadow-lg"
+            >
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-primary mb-2">{selectedCohortData.title} Schedule</h3>
+                <p className="text-gray-300">A {selectedCohortData.duration} journey starting {selectedCohortData.startDate}</p>
+              </div>
+              
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                <TabsList className="grid grid-cols-4 mb-8">
+                  {selectedCohortData.schedule.map((week) => (
+                    <TabsTrigger key={week.week} value={`week${week.week}`}>Week {week.week}</TabsTrigger>
+                  ))}
+                </TabsList>
+                
+                {selectedCohortData.schedule.map((week) => (
+                  <TabsContent key={week.week} value={`week${week.week}`} className="border border-gray-800 rounded-xl p-6 bg-black">
+                    <div className="mb-4">
+                      <h4 className="text-xl font-bold text-primary mb-2">Week {week.week}: {week.title}</h4>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h5 className="text-lg font-semibold mb-3 text-white">Topics Covered</h5>
+                        <ul className="space-y-2">
+                          {week.topics.map((topic, i) => (
+                            <li key={i} className="flex items-start">
+                              <CheckCircle2 className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                              <span className="text-gray-300">{topic}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h5 className="text-lg font-semibold mb-3 text-white">Suggested Pacing</h5>
+                        <div className="space-y-3">
+                          {week.pacing.map((pace, i) => (
+                            <div key={i} className="bg-gray-900 rounded-lg p-3 border border-gray-800">
+                              <p className="text-gray-300">{pace}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Original Weekly Schedule Section */}
         {weeklySchedule.map((weekData) => (
           <div key={weekData.week} className="mb-6 last:mb-0 bg-black rounded-md p-4 md:p-6 border border-gray-900 backdrop-blur-sm relative shadow-md">
             {weekData.week !== 0 && (
