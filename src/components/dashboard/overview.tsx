@@ -67,14 +67,14 @@ export default function DashboardOverview() {
         {stats.map((stat, index) => (
           <div 
             key={index} 
-            className="bg-black rounded-xl p-6 shadow-lg border border-gray-800 hover:border-primary/50 transition-all duration-300"
+            className="enhanced-card p-6 shadow-lg card-glow-hover"
           >
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-black rounded-lg">
+              <div className="p-2.5 bg-primary/10 rounded-lg border border-primary/20 shadow-lg shadow-primary/5">
                 {stat.icon}
               </div>
               <div>
-                <p className="text-gray-400 text-sm">{stat.label}</p>
+                <p className="text-gray-400 text-sm font-medium">{stat.label}</p>
                 <p className="text-white text-2xl font-bold">{stat.value}</p>
               </div>
             </div>
@@ -84,11 +84,11 @@ export default function DashboardOverview() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Learning Progress Section */}
-        <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+        <div className="enhanced-card p-6 shadow-lg">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-white">My Learning</h2>
-            <Link href="/dashboard/learn" className="text-primary hover:text-primary/80 text-sm flex items-center">
-              View all <ArrowRight className="ml-1 w-4 h-4" />
+            <Link href="/dashboard/learn" className="text-primary hover:text-primary/80 text-sm flex items-center group transition-all duration-300">
+              View all <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
           
@@ -98,19 +98,21 @@ export default function DashboardOverview() {
                 <Link 
                   key={course.id} 
                   href={course.url}
-                  className="p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 block card-hover"
+                  className="p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 block card-glow-hover shadow-lg"
                 >
                   <div className="flex items-center space-x-4">
                     <div 
-                      className="w-20 h-20 rounded-lg bg-cover bg-center flex-shrink-0 shadow-lg border border-gray-800" 
+                      className="w-20 h-20 rounded-lg bg-cover bg-center flex-shrink-0 shadow-lg border border-gray-800 overflow-hidden" 
                       style={{ backgroundImage: `url(${course.image})` }}
-                    ></div>
+                    >
+                      <div className="w-full h-full bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
                     <div className="flex-1">
                       <div className="flex justify-between items-center">
                         <h3 className="text-white font-medium">{course.title}</h3>
-                        <span className="text-primary text-sm font-semibold bg-primary/10 px-2 py-0.5 rounded-full">{course.progress}%</span>
+                        <span className="text-primary text-sm font-semibold bg-primary/10 px-2.5 py-0.5 rounded-full border border-primary/20 shadow-sm">{course.progress}%</span>
                       </div>
-                      <div className="w-full bg-gray-800 rounded-full h-2.5 mt-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-800 rounded-full h-2.5 mt-2.5 overflow-hidden border border-gray-700/30">
                         <div
                           className="bg-gradient-to-r from-primary/80 to-primary h-2.5 rounded-full shadow-inner shadow-primary/30"
                           style={{ width: `${course.progress}%` }}
