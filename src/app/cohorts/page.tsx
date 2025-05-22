@@ -34,6 +34,7 @@ const itemVariants = {
 
 export default function CohortsPage() {
   const [selectedCohort, setSelectedCohort] = useState('blockchain');
+  const [activeWeek, setActiveWeek] = useState('week1');
 
   const cohorts = [
     {
@@ -390,7 +391,13 @@ export default function CohortsPage() {
             <div className="mb-12">
               <h3 className="text-2xl font-bold mb-6 text-center">Weekly Schedule</h3>
               
-              <Tabs defaultValue="week1" className="w-full">
+              {/* Added value and onValueChange props to fix TypeScript error */}
+              <Tabs 
+                value={activeWeek} 
+                onValueChange={setActiveWeek} 
+                defaultValue="week1" 
+                className="w-full"
+              >
                 <TabsList className="grid grid-cols-4 mb-8">
                   <TabsTrigger value="week1">Week 1</TabsTrigger>
                   <TabsTrigger value="week2">Week 2</TabsTrigger>
