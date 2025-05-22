@@ -61,44 +61,47 @@ export default function RewardsPage() {
 
       {/* User Stats Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-gray-900 rounded-xl p-6 shadow-lg">
-          <h3 className="text-gray-400 text-sm mb-1">Total XP</h3>
+        <div className="bg-black rounded-xl p-6 shadow-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 card-glow-hover gradient-border-card">
+          <h3 className="text-gray-400 text-sm mb-1 font-medium">Total XP</h3>
           <p className="text-3xl font-bold text-primary">{userStats.totalXP}</p>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-6 shadow-lg">
-          <h3 className="text-gray-400 text-sm mb-1">Current Streak</h3>
-          <p className="text-3xl font-bold text-primary">{userStats.streak} days</p>
+        <div className="bg-black rounded-xl p-6 shadow-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 card-glow-hover gradient-border-card">
+          <h3 className="text-gray-400 text-sm mb-1 font-medium">Current Streak</h3>
+          <p className="text-3xl font-bold text-primary">{userStats.streak} <span className="text-lg text-gray-400">days</span></p>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-6 shadow-lg">
-          <h3 className="text-gray-400 text-sm mb-1">Courses Completed</h3>
+        <div className="bg-black rounded-xl p-6 shadow-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 card-glow-hover gradient-border-card">
+          <h3 className="text-gray-400 text-sm mb-1 font-medium">Courses Completed</h3>
           <p className="text-3xl font-bold text-primary">{userStats.coursesCompleted}</p>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-6 shadow-lg">
-          <h3 className="text-gray-400 text-sm mb-1">Modules Completed</h3>
+        <div className="bg-black rounded-xl p-6 shadow-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 card-glow-hover gradient-border-card">
+          <h3 className="text-gray-400 text-sm mb-1 font-medium">Modules Completed</h3>
           <p className="text-3xl font-bold text-primary">{userStats.modulesCompleted}</p>
         </div>
       </div>
 
       {/* Achievements Section */}
-      <div className="bg-gray-900 rounded-xl p-6 shadow-lg">
-        <h2 className="text-xl font-bold text-white mb-4">Achievements</h2>
+      <div className="bg-black rounded-xl p-6 shadow-xl border border-gray-800 gradient-border-card">
+        <h2 className="text-xl font-bold text-white mb-4 flex items-center">
+          <span className="text-primary mr-2">🏆</span> Achievements
+        </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {achievements.map((achievement) => (
             <div
               key={achievement.id}
-              className="bg-gray-800 rounded-lg p-4 flex items-start space-x-3"
+              className="bg-black rounded-lg p-5 flex items-start space-x-3 border border-gray-800 hover:border-primary/30 transition-all duration-300 card-hover card-glow-hover"
             >
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <span className="text-primary text-lg">{achievement.icon}</span>
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/10">
+                <span className="text-primary text-xl">{achievement.icon}</span>
               </div>
               <div>
                 <h3 className="text-white font-medium">{achievement.title}</h3>
                 <p className="text-sm text-gray-400">{achievement.description}</p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-500 mt-2 flex items-center">
+                  <span className="inline-block w-2 h-2 bg-primary rounded-full mr-1"></span>
                   Earned on {new Date(achievement.date).toLocaleDateString()}
                 </p>
               </div>
@@ -108,22 +111,25 @@ export default function RewardsPage() {
       </div>
 
       {/* NFT Certificates Section */}
-      <div className="bg-gray-900 rounded-xl p-6 shadow-lg">
-        <h2 className="text-xl font-bold text-white mb-4">On-Chain Credentials</h2>
+      <div className="bg-black rounded-xl p-6 shadow-xl border border-gray-800 gradient-border-card">
+        <h2 className="text-xl font-bold text-white mb-4 flex items-center">
+          <span className="text-primary mr-2">🔐</span> On-Chain Credentials
+        </h2>
         
         {nftCertificates.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {nftCertificates.map((cert) => (
-              <div key={cert.id} className="bg-gray-800 rounded-lg overflow-hidden">
-                <div className="p-4 border-b border-gray-700">
+              <div key={cert.id} className="bg-black rounded-lg overflow-hidden border border-gray-800 hover:border-primary/30 transition-all duration-300 card-hover card-glow-hover">
+                <div className="p-5 border-b border-gray-800 gradient-border-b">
                   <h3 className="text-white font-medium">{cert.title} Certificate</h3>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-400 flex items-center mt-1">
+                    <span className="inline-block w-2 h-2 bg-primary rounded-full mr-1"></span>
                     Issued on {new Date(cert.issueDate).toLocaleDateString()}
                   </p>
                 </div>
                 
-                <div className="p-4">
-                  <div className="bg-gray-900 p-3 rounded-lg mb-4">
+                <div className="p-5">
+                  <div className="bg-black p-4 rounded-lg mb-4 border border-gray-800">
                     <p className="text-xs text-gray-400 mb-1">Transaction Hash:</p>
                     <p className="text-xs font-mono text-gray-300 break-all">
                       {cert.txHash}
@@ -134,13 +140,19 @@ export default function RewardsPage() {
                     <Link
                       href={`https://etherscan.io/tx/${cert.txHash}`}
                       target="_blank"
-                      className="text-sm text-primary hover:text-primary/80 transition-colors"
+                      className="text-sm text-primary hover:text-primary/80 transition-colors flex items-center btn-outline py-1.5 px-3"
                     >
-                      View on Etherscan
+                      <span>View on Etherscan</span>
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                      </svg>
                     </Link>
                     
-                    <button className="text-sm text-primary hover:text-primary/80 transition-colors">
-                      Download
+                    <button className="text-sm text-primary hover:text-primary/80 transition-colors flex items-center btn-outline py-1.5 px-3">
+                      <span>Download</span>
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                      </svg>
                     </button>
                   </div>
                 </div>
@@ -148,21 +160,26 @@ export default function RewardsPage() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-8 bg-gray-800 rounded-lg">
-            <p className="text-gray-400 mb-2">You haven't earned any on-chain credentials yet.</p>
-            <p className="text-sm text-gray-500">
+          <div className="text-center py-10 bg-black rounded-lg border border-gray-800 card-glow-hover">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-black flex items-center justify-center shadow-lg shadow-primary/10">
+              <span className="text-primary text-2xl">🎓</span>
+            </div>
+            <p className="text-gray-300 mb-2 font-medium">You haven't earned any on-chain credentials yet.</p>
+            <p className="text-sm text-gray-500 max-w-md mx-auto">
               Complete courses to earn NFT certificates that verify your skills on-chain.
             </p>
           </div>
         )}
         
-        <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-          <h3 className="text-white font-medium mb-2">About On-Chain Credentials</h3>
-          <p className="text-sm text-gray-400">
+        <div className="mt-6 p-5 bg-black rounded-lg border border-gray-800 card-glow-hover">
+          <h3 className="text-white font-medium mb-3 flex items-center">
+            <span className="text-primary mr-2">ℹ️</span> About On-Chain Credentials
+          </h3>
+          <p className="text-sm text-gray-400 leading-relaxed">
             Our NFT certificates are stored on the Ethereum blockchain, providing tamper-proof verification of your achievements. 
             These credentials can be shared with potential employers or displayed in your digital wallet.
           </p>
-          <p className="text-sm text-gray-400 mt-2">
+          <p className="text-sm text-gray-400 mt-3 leading-relaxed">
             Your data privacy is our priority. Only your achievements are stored on-chain, never your personal information.
           </p>
         </div>

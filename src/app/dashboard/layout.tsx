@@ -83,7 +83,7 @@ export default function DashboardLayout({
         <div className="md:hidden p-3 flex items-center justify-between border-b border-gray-800/30 bg-black shadow-md sticky top-0 z-10 gradient-border-b">
           <button 
             onClick={() => setSidebarOpen(true)}
-            className="p-1.5 rounded-lg hover:bg-gray-900 transition-colors"
+            className="p-1.5 rounded-lg hover:bg-black transition-colors"
             aria-label="Open sidebar"
           >
             <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -99,7 +99,7 @@ export default function DashboardLayout({
         
         {/* Further improved padding and spacing for better responsiveness */}
         <div className="flex-1 p-3 sm:p-5 md:p-8 lg:p-10 pb-24 md:pb-8 overflow-x-hidden max-w-7xl mx-auto w-full">
-          <div className="bg-black rounded-xl shadow-xl border border-gray-800 p-3 sm:p-5 md:p-6 lg:p-8 overflow-hidden">
+          <div className="bg-black rounded-xl shadow-xl border border-gray-800 p-3 sm:p-5 md:p-6 lg:p-8 overflow-hidden gradient-border-card">
             {children}
           </div>
         </div>

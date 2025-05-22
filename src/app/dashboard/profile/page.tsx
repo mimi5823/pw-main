@@ -222,7 +222,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Profile Header */}
-      <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+      <div className="bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 p-6 shadow-lg border border-gray-800">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
           <div className="w-24 h-24 rounded-full bg-primary/90 flex items-center justify-center text-black font-bold text-3xl flex-shrink-0">
             {profile.displayName ? profile.displayName[0].toUpperCase() : "U"}
@@ -301,7 +301,7 @@ export default function ProfilePage() {
       {/* Tab Content */}
       <div className="space-y-8">
         {activeTab === "personal" && (
-          <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+          <div className="bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 p-6 shadow-lg border border-gray-800">
             <div className="flex items-center mb-6">
               <User className="w-6 h-6 text-primary mr-3" />
               <h2 className="text-xl font-bold text-white">Personal Information</h2>
@@ -320,10 +320,10 @@ export default function ProfilePage() {
                     name="displayName"
                     value={profile.displayName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 ) : (
-                  <p className="text-white px-4 py-3 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-white px-4 py-3 bg-black rounded-lg border border-gray-800">
                     {profile.displayName || "Not set"}
                   </p>
                 )}
@@ -341,10 +341,10 @@ export default function ProfilePage() {
                     name="age"
                     value={profile.age}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 ) : (
-                  <p className="text-white px-4 py-3 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-white px-4 py-3 bg-black rounded-lg border border-gray-800">
                     {profile.age || "Not set"}
                   </p>
                 )}
@@ -363,10 +363,10 @@ export default function ProfilePage() {
                     value={profile.location}
                     onChange={handleInputChange}
                     placeholder="City, Country"
-                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 ) : (
-                  <p className="text-white px-4 py-3 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-white px-4 py-3 bg-black rounded-lg border border-gray-800">
                     {profile.location || "Not set"}
                   </p>
                 )}
@@ -385,10 +385,10 @@ export default function ProfilePage() {
                     value={profile.website}
                     onChange={handleInputChange}
                     placeholder="https://yourwebsite.com"
-                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 ) : (
-                  <p className="text-white px-4 py-3 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-white px-4 py-3 bg-black rounded-lg border border-gray-800">
                     {profile.website || "Not set"}
                   </p>
                 )}
@@ -409,11 +409,11 @@ export default function ProfilePage() {
                       value={profile.twitter}
                       onChange={handleInputChange}
                       placeholder="username"
-                      className="w-full pl-8 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full pl-8 px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </div>
                 ) : (
-                  <p className="text-white px-4 py-3 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-white px-4 py-3 bg-black rounded-lg border border-gray-800">
                     {profile.twitter ? `@${profile.twitter}` : "Not set"}
                   </p>
                 )}
@@ -434,11 +434,11 @@ export default function ProfilePage() {
                       value={profile.github}
                       onChange={handleInputChange}
                       placeholder="username"
-                      className="w-full pl-8 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full pl-8 px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </div>
                 ) : (
-                  <p className="text-white px-4 py-3 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-white px-4 py-3 bg-black rounded-lg border border-gray-800">
                     {profile.github ? `@${profile.github}` : "Not set"}
                   </p>
                 )}
@@ -456,10 +456,10 @@ export default function ProfilePage() {
                     name="company"
                     value={profile.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 ) : (
-                  <p className="text-white px-4 py-3 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-white px-4 py-3 bg-black rounded-lg border border-gray-800">
                     {profile.company || "Not set"}
                   </p>
                 )}
@@ -477,10 +477,10 @@ export default function ProfilePage() {
                     name="position"
                     value={profile.position}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 ) : (
-                  <p className="text-white px-4 py-3 bg-gray-900 rounded-lg border border-gray-800">
+                  <p className="text-white px-4 py-3 bg-black rounded-lg border border-gray-800">
                     {profile.position || "Not set"}
                   </p>
                 )}
@@ -500,10 +500,10 @@ export default function ProfilePage() {
                   value={profile.bio}
                   onChange={handleInputChange}
                   placeholder="Tell us about yourself"
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent"
                 ></textarea>
               ) : (
-                <p className="text-white px-4 py-3 bg-gray-900 rounded-lg border border-gray-800 min-h-[100px]">
+                <p className="text-white px-4 py-3 bg-black rounded-lg border border-gray-800 min-h-[100px]">
                   {profile.bio || "No bio provided"}
                 </p>
               )}
@@ -526,7 +526,7 @@ export default function ProfilePage() {
         {activeTab === "learning" && (
           <div className="space-y-8">
             {/* Learning Path */}
-            <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+            <div className="bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 p-6 shadow-lg border border-gray-800">
               <div className="flex items-center mb-6">
                 <BookOpen className="w-6 h-6 text-primary mr-3" />
                 <h2 className="text-xl font-bold text-white">Learning Path</h2>
@@ -535,7 +535,7 @@ export default function ProfilePage() {
               {profile.learningPath ? (
                 <div>
                   {LEARNING_PATHS.map(path => path.id === profile.learningPath && (
-                    <div key={path.id} className="p-5 bg-gray-900 rounded-xl border border-primary/20">
+                    <div key={path.id} className="p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-primary/20">
                       <div className="flex items-center mb-3">
                         <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mr-3">
                           {path.icon}
@@ -548,7 +548,7 @@ export default function ProfilePage() {
                         <h4 className="text-sm font-medium text-gray-300 mb-2">Recommended Skills:</h4>
                         <div className="flex flex-wrap gap-2">
                           {path.skills.map(skill => (
-                            <span key={skill} className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-xs">
+                            <span key={skill} className="px-3 py-1 bg-black text-gray-300 rounded-full text-xs">
                               {skill}
                             </span>
                           ))}
@@ -569,7 +569,7 @@ export default function ProfilePage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-10 px-6 bg-gray-900 rounded-xl border border-gray-800">
+                <div className="text-center py-10 px-6 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
                   <BookOpen className="w-12 h-12 text-gray-600 mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-white mb-2">No Learning Path Selected</h3>
                   <p className="text-gray-400 mb-6 max-w-md mx-auto">
@@ -607,7 +607,7 @@ export default function ProfilePage() {
                     {LEARNING_PATHS.map(path => (
                       <div 
                         key={path.id}
-                        className={`p-4 bg-gray-900 rounded-xl border cursor-pointer transition-all duration-200 ${
+                        className={`p-4 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border cursor-pointer transition-all duration-200 ${
                           recommendedPath === path.id 
                             ? "border-primary/50 shadow-lg shadow-primary/10" 
                             : "border-gray-800 hover:border-gray-700"
@@ -635,7 +635,7 @@ export default function ProfilePage() {
             </div>
             
             {/* Hobbies & Skills */}
-            <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+            <div className="bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 p-6 shadow-lg border border-gray-800">
               <div className="flex items-center mb-6">
                 <User className="w-6 h-6 text-primary mr-3" />
                 <h2 className="text-xl font-bold text-white">Interests & Skills</h2>
@@ -655,7 +655,7 @@ export default function ProfilePage() {
                           className={`px-3 py-1 rounded-full text-sm transition-colors ${
                             profile.hobbies.includes(hobby)
                               ? "bg-primary/20 text-primary border border-primary/30"
-                              : "bg-gray-900 text-gray-400 border border-gray-800 hover:bg-gray-800"
+                              : "bg-black text-gray-400 border border-gray-800 hover:bg-black"
                           }`}
                         >
                           {hobby}
@@ -667,13 +667,13 @@ export default function ProfilePage() {
                       {profile.hobbies.length > 0 ? (
                         <div className="flex flex-wrap gap-2">
                           {profile.hobbies.map(hobby => (
-                            <span key={hobby} className="px-3 py-1 bg-gray-900 text-gray-300 rounded-full text-sm">
+                            <span key={hobby} className="px-3 py-1 bg-black text-gray-300 rounded-full text-sm">
                               {hobby}
                             </span>
                           ))}
                         </div>
                       ) : (
-                        <p className="text-gray-400 p-4 bg-gray-900 rounded-lg border border-gray-800">
+                        <p className="text-gray-400 p-4 bg-black rounded-lg border border-gray-800">
                           No hobbies or interests added yet.
                         </p>
                       )}
@@ -694,7 +694,7 @@ export default function ProfilePage() {
                           className={`px-3 py-1 rounded-full text-sm transition-colors ${
                             profile.skills.includes(skill)
                               ? "bg-primary/20 text-primary border border-primary/30"
-                              : "bg-gray-900 text-gray-400 border border-gray-800 hover:bg-gray-800"
+                              : "bg-black text-gray-400 border border-gray-800 hover:bg-black"
                           }`}
                         >
                           {skill}
@@ -706,13 +706,13 @@ export default function ProfilePage() {
                       {profile.skills.length > 0 ? (
                         <div className="flex flex-wrap gap-2">
                           {profile.skills.map(skill => (
-                            <span key={skill} className="px-3 py-1 bg-gray-900 text-gray-300 rounded-full text-sm">
+                            <span key={skill} className="px-3 py-1 bg-black text-gray-300 rounded-full text-sm">
                               {skill}
                             </span>
                           ))}
                         </div>
                       ) : (
-                        <p className="text-gray-400 p-4 bg-gray-900 rounded-lg border border-gray-800">
+                        <p className="text-gray-400 p-4 bg-black rounded-lg border border-gray-800">
                           No skills or expertise added yet.
                         </p>
                       )}
@@ -736,7 +736,7 @@ export default function ProfilePage() {
             
             {/* Learning Progress */}
             {profile.learningPath && (
-              <div className="bg-black rounded-xl p-6 shadow-lg border border-gray-800">
+              <div className="bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 p-6 shadow-lg border border-gray-800">
                 <div className="flex items-center mb-6">
                   <BookOpen className="w-6 h-6 text-primary mr-3" />
                   <h2 className="text-xl font-bold text-white">Learning Progress</h2>
@@ -745,22 +745,22 @@ export default function ProfilePage() {
                 <div className="space-y-6">
                   {/* Progress Overview */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="p-4 bg-gray-900 rounded-xl border border-gray-800">
+                    <div className="p-4 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
                       <p className="text-sm text-gray-400 mb-1">Overall Progress</p>
                       <div className="flex items-end justify-between">
                         <p className="text-2xl font-bold text-white">25%</p>
-                        <div className="w-full max-w-[100px] bg-gray-800 rounded-full h-2 ml-4">
+                        <div className="w-full max-w-[100px] bg-black rounded-full h-2 ml-4">
                           <div className="bg-primary h-2 rounded-full" style={{ width: "25%" }}></div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="p-4 bg-gray-900 rounded-xl border border-gray-800">
+                    <div className="p-4 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
                       <p className="text-sm text-gray-400 mb-1">Courses Completed</p>
                       <p className="text-2xl font-bold text-white">1 <span className="text-sm text-gray-500">/ 4</span></p>
                     </div>
                     
-                    <div className="p-4 bg-gray-900 rounded-xl border border-gray-800">
+                    <div className="p-4 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
                       <p className="text-sm text-gray-400 mb-1">Estimated Completion</p>
                       <p className="text-2xl font-bold text-white">3 months</p>
                     </div>
@@ -771,45 +771,45 @@ export default function ProfilePage() {
                     <h3 className="text-lg font-medium text-white mb-4">Path Courses</h3>
                     
                     <div className="space-y-4">
-                      <div className="p-4 bg-gray-900 rounded-xl border border-gray-800">
+                      <div className="p-4 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
                         <div className="flex justify-between items-center mb-2">
                           <h4 className="font-medium text-white">Introduction to DeFi</h4>
                           <span className="text-primary text-sm">100%</span>
                         </div>
-                        <div className="w-full bg-gray-800 rounded-full h-2 mb-2">
+                        <div className="w-full bg-black rounded-full h-2 mb-2">
                           <div className="bg-primary h-2 rounded-full" style={{ width: "100%" }}></div>
                         </div>
                         <p className="text-xs text-gray-500">Completed on May 15, 2025</p>
                       </div>
                       
-                      <div className="p-4 bg-gray-900 rounded-xl border border-gray-800">
+                      <div className="p-4 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
                         <div className="flex justify-between items-center mb-2">
                           <h4 className="font-medium text-white">Liquidity Provision Strategies</h4>
                           <span className="text-primary text-sm">35%</span>
                         </div>
-                        <div className="w-full bg-gray-800 rounded-full h-2 mb-2">
+                        <div className="w-full bg-black rounded-full h-2 mb-2">
                           <div className="bg-primary h-2 rounded-full" style={{ width: "35%" }}></div>
                         </div>
                         <p className="text-xs text-gray-500">In progress</p>
                       </div>
                       
-                      <div className="p-4 bg-gray-900 rounded-xl border border-gray-800">
+                      <div className="p-4 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
                         <div className="flex justify-between items-center mb-2">
                           <h4 className="font-medium text-white">Advanced Yield Farming</h4>
                           <span className="text-gray-400 text-sm">0%</span>
                         </div>
-                        <div className="w-full bg-gray-800 rounded-full h-2 mb-2">
+                        <div className="w-full bg-black rounded-full h-2 mb-2">
                           <div className="bg-primary h-2 rounded-full" style={{ width: "0%" }}></div>
                         </div>
                         <p className="text-xs text-gray-500">Not started</p>
                       </div>
                       
-                      <div className="p-4 bg-gray-900 rounded-xl border border-gray-800">
+                      <div className="p-4 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 border border-gray-800">
                         <div className="flex justify-between items-center mb-2">
                           <h4 className="font-medium text-white">DeFi Risk Management</h4>
                           <span className="text-gray-400 text-sm">0%</span>
                         </div>
-                        <div className="w-full bg-gray-800 rounded-full h-2 mb-2">
+                        <div className="w-full bg-black rounded-full h-2 mb-2">
                           <div className="bg-primary h-2 rounded-full" style={{ width: "0%" }}></div>
                         </div>
                         <p className="text-xs text-gray-500">Not started</p>

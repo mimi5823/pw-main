@@ -70,7 +70,7 @@ export default function DashboardOverview() {
             className="bg-black rounded-xl p-6 shadow-lg border border-gray-800 hover:border-primary/50 transition-all duration-300"
           >
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-gray-900 rounded-lg">
+              <div className="p-2 bg-black rounded-lg">
                 {stat.icon}
               </div>
               <div>
@@ -98,26 +98,26 @@ export default function DashboardOverview() {
                 <Link 
                   key={course.id} 
                   href={course.url}
-                  className="p-4 bg-gray-900 rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 block"
+                  className="p-5 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300 block card-hover"
                 >
                   <div className="flex items-center space-x-4">
                     <div 
-                      className="w-16 h-16 rounded-lg bg-cover bg-center flex-shrink-0" 
+                      className="w-20 h-20 rounded-lg bg-cover bg-center flex-shrink-0 shadow-lg border border-gray-800" 
                       style={{ backgroundImage: `url(${course.image})` }}
                     ></div>
                     <div className="flex-1">
                       <div className="flex justify-between items-center">
                         <h3 className="text-white font-medium">{course.title}</h3>
-                        <span className="text-primary text-sm font-semibold">{course.progress}%</span>
+                        <span className="text-primary text-sm font-semibold bg-primary/10 px-2 py-0.5 rounded-full">{course.progress}%</span>
                       </div>
-                      <div className="w-full bg-gray-800 rounded-full h-2 mt-2 overflow-hidden">
+                      <div className="w-full bg-gray-800 rounded-full h-2.5 mt-2.5 overflow-hidden">
                         <div
-                          className="bg-gradient-to-r from-primary/80 to-primary h-2 rounded-full"
+                          className="bg-gradient-to-r from-primary/80 to-primary h-2.5 rounded-full shadow-inner shadow-primary/30"
                           style={{ width: `${course.progress}%` }}
                         ></div>
                       </div>
-                      <div className="flex items-center mt-2">
-                        <Clock className="w-3 h-3 text-gray-500 mr-1" />
+                      <div className="flex items-center mt-2.5">
+                        <Clock className="w-3.5 h-3.5 text-primary/70 mr-1.5" />
                         <p className="text-xs text-gray-400">
                           Last: {course.lastLesson}
                         </p>
@@ -135,7 +135,7 @@ export default function DashboardOverview() {
               </Link>
             </div>
           ) : (
-            <div className="text-center py-12 px-6 bg-gray-900 rounded-xl border border-gray-800">
+            <div className="text-center py-12 px-6 bg-black rounded-xl border border-gray-800">
               <BookOpen className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-400 mb-4">You haven't enrolled in any courses yet.</p>
               <Link
@@ -162,7 +162,7 @@ export default function DashboardOverview() {
               {achievements.map((achievement) => (
                 <div
                   key={achievement.id}
-                  className="flex items-start space-x-4 p-4 bg-gray-900 rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300"
+                  className="flex items-start space-x-4 p-4 bg-black rounded-xl border border-gray-800 hover:border-primary/30 transition-all duration-300"
                 >
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20">
                     <span className="text-xl">{achievement.icon}</span>
@@ -192,7 +192,7 @@ export default function DashboardOverview() {
               </Link>
             </div>
           ) : (
-            <div className="text-center py-12 px-6 bg-gray-900 rounded-xl border border-gray-800">
+            <div className="text-center py-12 px-6 bg-black rounded-xl border border-gray-800">
               <Award className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-400">Complete courses to earn achievements.</p>
             </div>
@@ -209,7 +209,7 @@ export default function DashboardOverview() {
         
         {user?.wallet ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 p-5 bg-gray-900 rounded-xl border border-gray-800">
+            <div className="md:col-span-2 p-5 bg-black rounded-xl border border-gray-800">
               <p className="text-gray-400 mb-2 text-sm">Connected Wallet:</p>
               <div className="flex items-center">
                 <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mr-3">
@@ -220,7 +220,7 @@ export default function DashboardOverview() {
                 </p>
               </div>
             </div>
-            <div className="bg-gray-900 rounded-xl border border-gray-800 p-5 flex flex-col justify-between">
+            <div className="bg-black rounded-xl border border-gray-800 p-5 flex flex-col justify-between">
               <div>
                 <h3 className="text-white font-medium mb-1">Wallet Balance</h3>
                 <p className="text-2xl font-bold text-white">0.00 ETH</p>
@@ -237,7 +237,7 @@ export default function DashboardOverview() {
             </div>
           </div>
         ) : (
-          <div className="bg-gray-900 rounded-xl border border-gray-800 p-8">
+          <div className="bg-black rounded-xl border border-gray-800 p-8">
             <div className="text-center max-w-md mx-auto">
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <Wallet className="w-8 h-8 text-primary" />
