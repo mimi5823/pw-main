@@ -573,7 +573,7 @@ export default function CohortScheduleSection() {
             {weekData.week !== 0 && (
               <div className="absolute left-[2.5rem] -top-8 w-px h-8 bg-gradient-to-b from-transparent to-primary/50"></div>
             )}
-            <div className="flex items-center mb-5">
+            <div className="flex items-center mb-6 bg-black p-3 rounded-lg border border-gray-800 shadow-md">
               <WeekIcon weekNumber={weekData.week} />
               <div>
                 <span className="text-xs uppercase tracking-wider text-gray-400 font-medium mb-1 block">
@@ -635,7 +635,7 @@ export default function CohortScheduleSection() {
                       <div className="bg-black p-4 py-5 md:p-5 rounded-md border border-gray-900 shadow-inner max-w-full overflow-visible">
                         {detail.customContent ? (
                           <div className="space-y-8">
-                            <div className="bg-gray-900/50 rounded-xl p-5 border border-gray-800/50 shadow-md">
+                            <div className="bg-black rounded-xl p-5 border border-gray-800 shadow-md">
                               <h5 className="text-lg font-semibold mb-4 text-primary flex items-center">
                                 <span className="bg-primary/20 p-1.5 rounded-md mr-3">
                                   <Calendar className="w-5 h-5 text-primary" />
@@ -651,7 +651,7 @@ export default function CohortScheduleSection() {
                                 ))}
                               </ul>
                             </div>
-                            <div className="bg-gray-900/50 rounded-xl p-5 border border-gray-800/50 shadow-md">
+                            <div className="bg-black rounded-xl p-5 border border-gray-800 shadow-md">
                               <h5 className="text-lg font-semibold mb-4 text-primary flex items-center">
                                 <span className="bg-primary/20 p-1.5 rounded-md mr-3">
                                   <Clock className="w-5 h-5 text-primary" />
@@ -660,7 +660,7 @@ export default function CohortScheduleSection() {
                               </h5>
                               <div className="space-y-3">
                                 {detail.customContent.pacing.map((pace, i) => (
-                                  <div key={i} className="bg-gray-900 rounded-lg p-3.5 border border-gray-800 hover:border-gray-700 transition-colors shadow-sm">
+                                  <div key={i} className="bg-gray-950 rounded-lg p-3.5 border border-gray-800 hover:border-primary/30 transition-colors shadow-sm">
                                     <p className="text-gray-200">{pace}</p>
                                   </div>
                                 ))}
@@ -669,16 +669,19 @@ export default function CohortScheduleSection() {
                           </div>
                         ) : (
                           <>
-                            <p className="whitespace-normal">{detail.description}</p>
-                            {detail.items && (
-                              <ul className="list-none mt-3 space-y-2">
-                                {detail.items.map((item: string, i: number) => (
-                                  <li key={i} className="text-gray-300 py-1 whitespace-normal">
-                                    <span>{item}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
+                            <div className="bg-black rounded-xl p-5 border border-gray-800 shadow-md">
+                              <p className="whitespace-normal text-gray-200 leading-relaxed">{detail.description}</p>
+                              {detail.items && (
+                                <ul className="list-none mt-4 space-y-3">
+                                  {detail.items.map((item: string, i: number) => (
+                                    <li key={i} className="flex items-start group transition-all duration-200 hover:translate-x-1">
+                                      <CheckCircle2 className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                                      <span className="text-gray-200 group-hover:text-white transition-colors whitespace-normal">{item}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
                             {detail.footer && <p className="mt-3 text-sm text-gray-400 italic whitespace-normal">{detail.footer}</p>}
                           </>
                         )}

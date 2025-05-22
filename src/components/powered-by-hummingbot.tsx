@@ -26,7 +26,7 @@ export default function PoweredByHummingbotSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
           {stats.map((stat) => (
-            <div key={stat.label} className="p-6 rounded-md border border-gray-800 bg-gray-900/30 backdrop-blur-sm hover:bg-gray-800/40 transition-all duration-300">
+            <div key={stat.label} className="p-6 rounded-md border border-gray-800 bg-black backdrop-blur-sm hover:border-primary/30 transition-all duration-300 shadow-md">
               <p className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</p>
               <p className="text-gray-400">{stat.label}</p>
             </div>
