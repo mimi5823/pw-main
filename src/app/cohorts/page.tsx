@@ -5,9 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Calendar, Clock, Users, Award, BookOpen, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
-import CohortScheduleSection from '@/components/cohort-schedule';
 
 // Component imports and setup
 
@@ -93,7 +91,87 @@ export default function CohortsPage() {
     }
   ];
 
-  // Using the CohortScheduleSection component for schedule display
+  // Schedule data for cohorts
+  const scheduleHighlights = [
+    {
+      id: 'blockchain-fundamentals',
+      title: 'Blockchain Fundamentals',
+      description: 'Master the core concepts of blockchain technology in this 4-week cohort designed for beginners. Learn about distributed ledgers, cryptocurrencies, and Web3.',
+      icon: '/theory-icon.svg',
+      startDate: 'June 15, 2025',
+      duration: '4 weeks',
+      schedule: [
+        {
+          week: 1,
+          title: "Introduction to Blockchain Technology",
+          topics: [
+            "What is Blockchain? (Defining principles: decentralization, transparency, immutability)",
+            "Problems blockchain solves",
+            "How a blockchain works (Blocks, chains, basic cryptography)",
+            "Distributed Ledger Technology",
+            "Types of Blockchains (Public, Private, Consortium)",
+            "Key Concepts (Nodes, conceptual mining, basic consensus mechanisms like PoW/PoS)"
+          ],
+          pacing: [
+            "Days 1-2: Focus on 'What is Blockchain?' and 'How it Works' (45-60 min/day)",
+            "Day 3: Cover 'Types of Blockchains' and 'Key Concepts' (45-60 min)",
+            "Day 4: Review of the week's material (30-45 min)"
+          ]
+        },
+        {
+          week: 2,
+          title: "Cryptocurrencies: The First Application",
+          topics: [
+            "What is Cryptocurrency? (Digital vs. traditional currency, role of cryptography)",
+            "Bitcoin: The Pioneer (History, significance)",
+            "Altcoins: An Overview (Brief intro, e.g., Ethereum as a platform)",
+            "Wallets and Exchanges (Conceptual: how to store/acquire, public/private keys simply explained, basic types of exchanges)"
+          ],
+          pacing: [
+            "Day 1: 'What is Cryptocurrency?' and its core features (45-60 min)",
+            "Day 2: Deep dive into Bitcoin (45-60 min)",
+            "Day 3: Introduction to Altcoins and the concept of Wallets (45-60 min)",
+            "Day 4: Understanding Exchanges and a review of the week (30-45 min)"
+          ]
+        },
+        {
+          week: 3,
+          title: "The Expanding Blockchain Ecosystem (Web3)",
+          topics: [
+            "Smart Contracts: Automated Agreements (Basic concept, no coding, potential uses)",
+            "Decentralized Applications (DApps) (What they are, conceptual differences from traditional apps)",
+            "Non-Fungible Tokens (NFTs) (Understanding NFTs, digital ownership, use cases)",
+            "Decentralized Autonomous Organizations (DAOs) (Intro to DAOs, community governance)",
+            "Introduction to Decentralized Finance (DeFi) (What is DeFi? Simple explanations of lending, borrowing, DEXs, stablecoins)"
+          ],
+          pacing: [
+            "Day 1: Smart Contracts and DApps (45-60 min)",
+            "Day 2: Focus on NFTs (45-60 min)",
+            "Day 3: Introduction to DAOs (45-60 min)",
+            "Day 4: Introduction to DeFi core concepts (60 min)",
+            "Day 5: Review and connecting how these elements form the Web3 ecosystem (30-45 min)"
+          ]
+        },
+        {
+          week: 4,
+          title: "Blockchain in the Real World & Future Outlook",
+          topics: [
+            "Real-World Use Cases (Examples in supply chain, healthcare, etc. - conceptual)",
+            "Understanding the Landscape (Basic overview of blockchain infrastructure, different protocols high-level)",
+            "Opportunities and Challenges (Benefits, scalability, regulation, adoption)",
+            "Legal and regulatory considerations (awareness)",
+            "The Future of Web3 (Speculative overview)"
+          ],
+          pacing: [
+            "Day 1: Explore Real-World Use Cases across different industries (45-60 min)",
+            "Day 2: Understanding the broader landscape and different protocols (45-60 min)",
+            "Day 3: Discussing Opportunities, Challenges, and regulatory aspects (45-60 min)",
+            "Day 4: Contemplating the Future of Web3 and cohort wrap-up (30-45 min)"
+          ]
+        }
+      ]
+    }
+  ];
 
   // Exclusive benefits for cohort members
   const exclusiveBenefits = [
@@ -323,7 +401,46 @@ export default function CohortsPage() {
             <div className="mb-12">
               <h3 className="text-2xl font-bold mb-6 text-center">Weekly Schedule</h3>
               
-              <CohortScheduleSection />
+              <div className="w-full">
+                {scheduleHighlights.find(cohort => cohort.id === 'blockchain-fundamentals')?.schedule.map((weekData, index) => (
+                  <div key={index} className="mb-6 last:mb-0 bg-black rounded-md p-4 md:p-6 border border-gray-900 backdrop-blur-sm relative shadow-md">
+                    {index !== 0 && (
+                      <div className="absolute left-[2.5rem] -top-8 w-px h-8 bg-gradient-to-b from-transparent to-primary/50"></div>
+                    )}
+                    <div className="flex items-center mb-5">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                        <span className="text-primary font-bold">{weekData.week}</span>
+                      </div>
+                      <h4 className="text-xl font-bold">{weekData.title}</h4>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ml-16">
+                      <div>
+                        <h5 className="text-lg font-semibold mb-3 text-white">Topics Covered</h5>
+                        <ul className="space-y-2">
+                          {weekData.topics.map((topic, i) => (
+                            <li key={i} className="flex items-start">
+                              <CheckCircle2 className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                              <span className="text-gray-300">{topic}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h5 className="text-lg font-semibold mb-3 text-white">Suggested Pacing</h5>
+                        <div className="space-y-3">
+                          {weekData.pacing.map((pace, i) => (
+                            <div key={i} className="bg-gray-900 rounded-lg p-3 border border-gray-800">
+                              <p className="text-gray-300">{pace}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Call to Action */}
